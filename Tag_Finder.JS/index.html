@@ -67,7 +67,7 @@
         var lf = totallf;
      
         xmlhttp=getXMLHttp();
-        
+               
         xmlhttp.onreadystatechange = function(){
     		if(xmlhttp.readyState == 4){
       		HandleResponse(xmlhttp.responseText);
@@ -75,6 +75,7 @@
   	}
          
          xmlhttp.open("GET","index.php?q="+am,true);
+         document.write(xmlhttp);
          xmlhttp.send();       
 
 	}
