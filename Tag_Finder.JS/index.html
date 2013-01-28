@@ -37,19 +37,44 @@
 	return true;	
 	}
 
-        // Goes through the db to find #tags 
+	// function to find XMLHttp request according to browser 
+
+	function getXMLHttp(){
+ 	var xmlHttp;
+  		try{
+    			//Firefox, Opera 8.0+, Safari
+    			xmlHttp = new XMLHttpRequest();
+  		} catch(e){
+    			//Internet Explorer
+    			try {
+      			xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+    			} catch(e){
+      				try {
+        			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+      				} catch(e){
+        			alert("Your browser does not support AJAX")
+        			return false;
+      				}
+    			}
+  		}
+  	return xmlHttp;
+	}
 	
 	function parseDocument(totalam, totallf){
        
         var am = totalam;
         var lf = totallf;
      
-         if (window.XMLHttpRequest) {
-          // code for IE7+, Firefox, Chrome, Opera, Safari
-         xmlhttp=new XMLHttpRequest();
-         }
+        xmlhttp=getXMLhttp();
+        
+        xmlHttp.onreadystatechange = function(){
+    		if(xmlHttp.readyState == 4){
+      		HandleResponse(xmlHttp.responseText);
+    		}
+  	}
+         
          xmlhttp.open("GET","index.php?q="+am,true);
-         xmlhttp.send();       
+         xmlhttp.send(null);       
 
 	}
 	
