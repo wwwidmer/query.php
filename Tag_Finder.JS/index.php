@@ -2,7 +2,10 @@
 $q_GET["q"];
 // mysql connection
 
-$connect = mysql_connect("localhost", "user","password") or die(mysql_error());
+
+// current dilemma : need to find where my test mysql "server" is located
+
+$connect = mysql_connect("localhost", "ODBC","password") or die(mysql_error());
 mysql_select_db("test", $connect) or die (mysql_error());
 
 
