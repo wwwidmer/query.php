@@ -1,0 +1,19 @@
+
+
+jquery- using to access document objects 
+json- using json to securely transmit data between php and js 
+
+javascript works as front end for input, x y and/or z.
+invokes php script, php script searches database for x y and/or z. 
+php script returns an array of matching objects.
+javascript parses array and displays.
+
+
+<database>
+<!element howto>
+<!attlist howto url PCDATA #required
+                description PCDATA #implied
+                name PCDATA #required 
+                location PCDATA #implied >
+
+name / url / description / location
