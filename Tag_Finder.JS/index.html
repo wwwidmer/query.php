@@ -70,11 +70,11 @@
         
         xmlhttp.onreadystatechange = function(){
     		if(xmlhttp.readyState == 4){
-      		//HandleResponse(xmlhttp.responseText);
+      		HandleResponse(xmlhttp.responseText);
     		}
   	}
          
-         xmlhttp.open("GET","index.php?q="+am,false);
+         xmlhttp.open("GET","index.php",true);
          xmlhttp.send();       
 
 	}
