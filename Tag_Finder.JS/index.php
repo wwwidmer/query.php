@@ -8,8 +8,9 @@ $q_GET["q"];
 $connect = mysql_connect("localhost", "ODBC","password") or die(mysql_error());
 mysql_select_db("test", $connect) or die (mysql_error());
 
+// query the database, selects table a and finds tags (only tags for now; locations and subjects in the future)
 
-$result = mysql_query("SELECT * FROM A WHERE Tag=$q") or die(mysql_error());
+$result = mysql_query("SELECT * FROM a WHERE Tag=$q") or die(mysql_error());
 $row = mysql_fetch($result);
 
 // echo to make sure it works
