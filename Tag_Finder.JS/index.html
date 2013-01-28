@@ -2,16 +2,15 @@
 <html lang="us">
 <head>
 	<title>Tag</title>
+        // In case I need jquery...
 	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 	<script type="text/javascript" >	
 	
 	// Selects the tags to be searched for from the input
 
-		var totalam="";
-		var totallf="";	
-	
 	function select(){
-	
+	        var totalam="";
+		var totallf="";	
 		for(var i=0;i<document.forms[0].length;i++){
 			if(document.forms[0][i].checked){
 				totalam+=document.forms[0][i].value + "\n";
@@ -31,16 +30,16 @@
 		else 
  			alert(totallf);
  			
- 			parseDocument();	
+ 			parseDocument(totalam, totallf);	
                         totalam="";
                         totallf="";
  			
-	return false;	
+	return true;	
 	}
 
         // Goes through the db to find #tags 
 	
-	function parseDocument(){
+	function parseDocument(totalam, totallf){
        
         var am = totalam;
         var lf = totallf;
@@ -50,8 +49,7 @@
          xmlhttp=new XMLHttpRequest();
          }
          xmlhttp.open("GET","index.php?q=",true);
-         xmlhttp.send();
-        
+         xmlhttp.send();       
 
 	}
 	
