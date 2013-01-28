@@ -38,12 +38,19 @@
 	return false;	
 	}
 
-		// Goes through the db to find #tags 
+        // Goes through the db to find #tags 
 	
 	function parseDocument(){
+       
         var am = totalam;
         var lf = totallf;
-        
+     
+         if (window.XMLHttpRequest) {
+          // code for IE7+, Firefox, Chrome, Opera, Safari
+         xmlhttp=new XMLHttpRequest();
+         }
+         xmlhttp.open("GET","index.php?q=",true);
+         xmlhttp.send();
         
 
 	}
