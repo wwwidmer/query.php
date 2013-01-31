@@ -2,100 +2,99 @@
 <meta charset="utf-8">
 <html lang="us">
 <head>
-	<title>Tag</title>
+<title>Tag</title>
         
-	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-	<script type="text/javascript" >	
-	
-	// Selects the tags to be searched for from the input
+<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" >	
 
-	function select(){
-	        var total={"".""};
-                
-		
-		for(var i=0;i<document.forms[0].length;i++){
-			if(document.forms[0][i].checked){
-				total.push(document.forms[0][i].value + "\n");
-			}		
-		}
-		for(var i=0;i<document.forms[1].length;i++){
-			if(document.forms[1][i].checked){
-				total.push(document.forms[1][i].value + "\n");
-			}		
-		}
-		if(total[0]==null)
- 			alert("select what you are");
-		else 
- 			alert(total[0]);
- 		if(totall[1]==null)
- 			alert("select what you're looking for");
-		else 
- 			alert(total[1]);
- 			
- 			parseDocument(total);	
-                        total[0]="";
-                        total[1]="";
- 			
-	return true;	
-	}
+// Selects the tags to be searched for from the input
 
-	// function to find XMLHttp request according to browser 
+function select(){
+var totalam="";
+var totallf="";	
+for(var i=0;i<document.forms[0].length;i++){
+if(document.forms[0][i].checked){
+totalam+=document.forms[0][i].value + "\n";
+}	
+}
+for(var i=0;i<document.forms[1].length;i++){
+if(document.forms[1][i].checked){
+totallf+=document.forms[1][i].value + "\n";
+}	
+}
+if(totalam=="")
+  alert("select what you are");
+else
+  alert(totalam);
+  if(totallf=="")
+  alert("select what you're looking for");
+else
+  alert(totallf);
+ 
+  parseDocument(totalam, totallf);	
+                        totalam="";
+                        totallf="";
+ 
+return true;	
+}
 
-	function getXMLHttp(){
- 	var xmlHttp;
-  		try{
-    			//Firefox, Opera 8.0+, Safari
-    			xmlHttp = new XMLHttpRequest();
-  		} catch(e){
-    			//Internet Explorer
-    			try {
-      			xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
-    			} catch(e){
-      				try {
-        			xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-      				} catch(e){
-        			alert("Your browser does not support AJAX")
-        			return false;
-      				}
-    			}
-  		}
-  	return xmlHttp;
-	}
-	
-	function parseDocument(total){
+// function to find XMLHttp request according to browser
+
+function getXMLHttp(){
+  var xmlHttp;
+   try{
+     //Firefox, Opera 8.0+, Safari
+     xmlHttp = new XMLHttpRequest();
+   } catch(e){
+     //Internet Explorer
+     try {
+       xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+     } catch(e){
+       try {
+         xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+       } catch(e){
+         alert("Your browser does not support AJAX")
+         return false;
+       }
+     }
+   }
+   return xmlHttp;
+}
+
+function parseDocument(totalam, totallf){
        
-        var am = total[0];
-        var lf = total[1];
+        var am = totalam;
+        var lf = totallf;
      
         xmlhttp=getXMLHttp();
                
         xmlhttp.onreadystatechange = function(){
-    		if(xmlhttp.readyState == 4){
-      		HandleResponse(xmlhttp.responseText);
-    		}
-  	}
+     if(xmlhttp.readyState == 4){
+       HandleResponse(xmlhttp.responseText);
+     }
+   }
          
          xmlhttp.open("GET","index.php?q="+am,true);
          
-         xmlhttp.send();       
+         xmlhttp.send();
 
-	}
-	
-	
-	</script>	
+}
+
+
+</script>	
 </head>
 <body>
 <div> I am a...</div>
 <form id="iAma">
 <input type="checkbox" name="IAM" value="a"> a<br>
 <input type="checkbox" name="IAM" value="b"> b <br>
-<input type="checkbox" name="IAM" value="c"> c <br> 
+<input type="checkbox" name="IAM" value="c"> c <br>
 </form>
 <div> Looking for... </div>
 <form id="lookFor">
 <input type="checkbox" name="IAMA1" value="Mali"> Mali<br>
 <input type="checkbox" name="IAMA2" value="NY"> NY <br>
-<input type="checkbox" name="IAMA3" value="CA"> CA <br> 
+<input type="checkbox" name="IAMA3" value="CA"> CA <br>
 </form>
 <tr ><td align=center >
 <button value=Submit onclick="select()">Submit</button><br/>
