@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
@@ -201,6 +200,21 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
       <p> 
 <strong>The Movements.org how-to guides identify best practices for the use of digital technologies for social change. 
 
+<!-- WORK AREA --!>
+<!-- WORK AREA --!>
+
+<!-- WORK AREA --!>
+<!-- WORK AREA --!>
+<!-- WORK AREA --!>
+<!-- WORK AREA --!>
+<!-- WORK AREA --!>
+<!-- WORK AREA --!>
+<!-- WORK AREA --!>
+<!-- WORK AREA --!>
+<!-- WORK AREA --!>
+<!-- WORK AREA --!>
+
+
 <h2> I am a(n)...</h2>
 
 <form id="iAma">
@@ -215,12 +229,12 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 <input type="checkbox" name="IAMA1" value="protest"> Learn how to protest<br>
 <input type="checkbox" name="IAMA2" value="safety"> Stay safe <br>
 <input type="checkbox" name="IAMA3" value="online"> Be anonymous <br>
-<input type="checkbox" name="IAMA1" value="sme"> Something else<br>
-<input type="checkbox" name="IAMA2" value="sme2"> Something else <br>
-<input type="checkbox" name="IAMA3" value="sme3"> Something else <br>
-<input type="checkbox" name="IAMA1" value="sme4"> Something else<br>
-<input type="checkbox" name="IAMA2" value="sme5"> Something else <br>
-<input type="checkbox" name="IAMA3" value="sme6"> Something else <br>
+<input type="checkbox" name="IAMA4" value="sme"> Something else<br>
+<input type="checkbox" name="IAMA5" value="sme2"> Something else <br>
+<input type="checkbox" name="IAMA6" value="sme3"> Something else <br>
+<input type="checkbox" name="IAMA7" value="sme4"> Something else<br>
+<input type="checkbox" name="IAMA8" value="sme5"> Something else <br>
+<input type="checkbox" name="IAMA9" value="sme6"> Something else <br>
 
 </form>
 <tr ><td align=center >
