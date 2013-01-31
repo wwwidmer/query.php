@@ -1,5 +1,6 @@
 <?php
 $q_GET["q"];
+$r_GET["r"];
 // mysql connection
 
 
