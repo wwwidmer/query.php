@@ -6,7 +6,7 @@
 
 TAG_FINDER.js
 
-Takes input(tags) from front end html page and transmit to sever.
+Takes input(tags) from the front end html page and transmits to a server.
 
 TAG_FINDER.php 
 
