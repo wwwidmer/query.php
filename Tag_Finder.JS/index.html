@@ -10,30 +10,32 @@
 	// Selects the tags to be searched for from the input
 
 	function select(){
-	        var totalam="";
-		var totallf="";	
+	        var total={};
+                total[0]="";
+                total[1]="";
+		
 		for(var i=0;i<document.forms[0].length;i++){
 			if(document.forms[0][i].checked){
-				totalam+=document.forms[0][i].value + "\n";
+				total.push(document.forms[0][i].value + "\n");
 			}		
 		}
 		for(var i=0;i<document.forms[1].length;i++){
 			if(document.forms[1][i].checked){
-				totallf+=document.forms[1][i].value + "\n";
+				total.push(document.forms[1][i].value + "\n");
 			}		
 		}
-		if(totalam=="")
+		if(total[0]==null)
  			alert("select what you are");
 		else 
- 			alert(totalam);
- 		if(totallf=="")
+ 			alert(total[0]);
+ 		if(totall[1]==null)
  			alert("select what you're looking for");
 		else 
- 			alert(totallf);
+ 			alert(total[1]);
  			
- 			parseDocument(totalam, totallf);	
-                        totalam="";
-                        totallf="";
+ 			parseDocument(total);	
+                        total[0]="";
+                        total[1]="";
  			
 	return true;	
 	}
@@ -61,10 +63,10 @@
   	return xmlHttp;
 	}
 	
-	function parseDocument(totalam, totallf){
+	function parseDocument(total){
        
-        var am = totalam;
-        var lf = totallf;
+        var am = total[0];
+        var lf = total[1];
      
         xmlhttp=getXMLHttp();
                
