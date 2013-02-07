@@ -10,23 +10,25 @@
 // Selects the tags to be searched for from the input
 
 function select(){
-        var totalam="";
-        var totallf="";	
-        for(var i=0;i<document.forms[0].length;i++){
+       
+        var total= new Array();
+        
+        for(int i=0;i<document.forms[0].length;){
                 if(document.forms[0][i].checked){
-                        totalam+=document.forms[0][i].value + "\n";
-                }	
+                        total[0]=document.forms[1][0].value+"\n";
+                }
         }
+        alert(total[0]);
+        
         for(var i=0;i<document.forms[1].length;i++){
                 if(document.forms[1][i].checked){
-                        totallf+=document.forms[1][i].value + "\n";
+                        total[1+i]+=document.forms[1][i].value;
                 }	
         }
+        alert(total[1]);
        
-       parseDocument(totalam, totallf);	
-                        totalam="";
-                        totallf="";
- 
+        parseDocument(total);	
+                         
         return true;	
 }
 
@@ -53,10 +55,14 @@ function getXMLHttp(){
    return xmlHttp;
 }
 
-function parseDocument(totalam, totallf){
+function parseDocument(total){
        
-        var am = totalam;
-        var lf = totallf;
+        am = total[0];
+        lf = total[1];
+        
+        if(total.length>2){
+                // create more vars
+        }
      
         xmlhttp=getXMLHttp();
                
