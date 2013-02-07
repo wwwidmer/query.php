@@ -15,9 +15,9 @@ Takes transmitted input(tags) for querying through a database and returns to an 
 
 index.html
 
-Driver html document for testing
+Driver html document for testing.
 
 quert.html
 
-html document for testing
+html document for testing.
 
