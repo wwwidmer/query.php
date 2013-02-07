@@ -13,7 +13,9 @@ $query= "SELECT Name,URL FROM howToTest WHERE Tag = '".$q."' and Topic = '".r."'
 
 $result = mysql_query($query) or die(mysql_error());
 
-echo $result;
+$row = json_encode(mysql_fetch_assoc($result));
+
+echo "queryResults(".$result.")";
   
 ?>
 
