@@ -10,32 +10,24 @@
 // Selects the tags to be searched for from the input
 
 function select(){
-var totalam="";
-var totallf="";	
-for(var i=0;i<document.forms[0].length;i++){
-if(document.forms[0][i].checked){
-totalam+=document.forms[0][i].value + "\n";
-}	
-}
-for(var i=0;i<document.forms[1].length;i++){
-if(document.forms[1][i].checked){
-totallf+=document.forms[1][i].value + "\n";
-}	
-}
-if(totalam=="")
-  alert("select what you are");
-else
-  alert(totalam);
-  if(totallf=="")
-  alert("select what you're looking for");
-else
-  alert(totallf);
- 
-  parseDocument(totalam, totallf);	
+        var totalam="";
+        var totallf="";	
+        for(var i=0;i<document.forms[0].length;i++){
+                if(document.forms[0][i].checked){
+                        totalam+=document.forms[0][i].value + "\n";
+                }	
+        }
+        for(var i=0;i<document.forms[1].length;i++){
+                if(document.forms[1][i].checked){
+                        totallf+=document.forms[1][i].value + "\n";
+                }	
+        }
+       
+       parseDocument(totalam, totallf);	
                         totalam="";
                         totallf="";
  
-return true;	
+        return true;	
 }
 
 // function to find XMLHttp request according to browser
@@ -74,11 +66,16 @@ function parseDocument(totalam, totallf){
      }
    }
          
-         xmlhttp.open("GET","index.php?q="+am +'&r='+lf,true);
-         
+         xmlhttp.open("GET","index.php?q="+am +'&r='+lf,true);         
          xmlhttp.send();
 }
 
+
+$(document).ready(function() {
+    $('iAma').click(function() {
+        $('lookFor').css("color","gray");
+    });
+});
 
 </script>	
 </head>
@@ -91,9 +88,9 @@ function parseDocument(totalam, totallf){
 </form>
 <div> Looking for... </div>
 <form id="lookFor">
-<input type="checkbox" name="IAMA1" value="Mali"> Mali<br>
-<input type="checkbox" name="IAMA2" value="NY"> NY <br>
-<input type="checkbox" name="IAMA3" value="CA"> CA <br>
+<input type="checkbox" name="IAMA1" value="1"> 1 <br>
+<input type="checkbox" name="IAMA2" value="2"> 2 <br>
+<input type="checkbox" name="IAMA3" value="3"> 3 <br>
 </form>
 <tr ><td align=center >
 <button value=Submit onclick="select()">Submit</button><br/>
