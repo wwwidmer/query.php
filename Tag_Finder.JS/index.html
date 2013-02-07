@@ -22,7 +22,7 @@ function select(){
         
         for(var i=0;i<document.forms[1].length;i++){
                 if(document.forms[1][i].checked){
-                        total[1+i]=document.forms[1][i].value;
+                        total.push(document.forms[1][i].value);     
                 }	
         }
         alert(total[1]);
