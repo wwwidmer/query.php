@@ -1,3 +1,4 @@
+<script src="http://code.jquery.com/jquery-1.9.1.min.js">
 <script type="text/javascript" >  
 
 // Selects the tags to be searched for from the input
@@ -18,7 +19,7 @@ function select(){
                 }	
         }
               
-        parseDocument(total);	
+        sendHttpReq(total);	
                          
 }
 
@@ -45,31 +46,19 @@ function getXMLHttp(){
    return xmlHttp;
 }
 
-function parseDocument(total){
+function sendHttpReq (total){
        
         xmlhttp=getXMLHttp();               
-        xmlhttp.onreadystatechange = function(){
-                if(xmlhttp.readyState == 4){
-                        HandleResponse(xmlhttp.responseText);
-                        }
-        }
-         
+      
         am = total[0];
         lf = total[1];
         
         if(total.length>2){
-                // create more vars
+                // create more vars if user selects more input
         }
          
          xmlhttp.open("GET","tag_finder.php?q="+am +'&r='+lf,true);         
          xmlhttp.send();
-}
-
-function queryResult(data){
-
-        var results = JSON.parse(data);
-        document.write(results.Url);
-        
 }
 
 </script>	
