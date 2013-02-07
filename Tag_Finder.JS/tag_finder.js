@@ -46,8 +46,9 @@ function getXMLHttp(){
    return xmlHttp;
 }
 
-function sendHttpReq (total){
-       
+// function to send out xmlhttprequest to the server to handle the server side scripting
+
+function sendHttpReq (total){       
         xmlhttp=getXMLHttp();               
       
         am = total[0];
