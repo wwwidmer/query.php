@@ -72,8 +72,10 @@ function parseDocument(totalam, totallf){
 
 
 $(document).ready(function() {
-    $('iAma').click(function() {
-        $('lookFor').css("color","gray");
+        alert("on");
+    $("iAMa").click(function() {
+        alert("clicked");
+        $("IAM2").css("color","gray");
     });
 });
 
@@ -82,9 +84,9 @@ $(document).ready(function() {
 <body>
 <div> I am a...</div>
 <form id="iAma">
-<input type="checkbox" name="IAM" value="a"> a<br>
-<input type="checkbox" name="IAM" value="b"> b <br>
-<input type="checkbox" name="IAM" value="c"> c <br>
+<input type="checkbox" name="IAMa" value="a"> a<br>
+<input type="checkbox" name="IAMb" value="b"> b <br>
+<input type="checkbox" name="IAMc" value="c"> c <br>
 </form>
 <div> Looking for... </div>
 <form id="lookFor">
