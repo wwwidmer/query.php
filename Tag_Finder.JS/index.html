@@ -15,7 +15,7 @@ function select(){
         
         for(var i=0;i<document.forms[0].length;i++){
                 if(document.forms[0][i].checked){
-                        total[0]=document.forms[1][0].value+"\n";
+                        total[0]=document.forms[0][i].value+"\n";
                 }
         }
         alert(total[0]);
@@ -57,20 +57,19 @@ function getXMLHttp(){
 
 function parseDocument(total){
        
+        xmlhttp=getXMLHttp();               
+        xmlhttp.onreadystatechange = function(){
+                if(xmlhttp.readyState == 4){
+                        HandleResponse(xmlhttp.responseText);
+                        }
+        }
+         
         am = total[0];
         lf = total[1];
         
         if(total.length>2){
                 // create more vars
         }
-     
-        xmlhttp=getXMLHttp();
-               
-        xmlhttp.onreadystatechange = function(){
-     if(xmlhttp.readyState == 4){
-       HandleResponse(xmlhttp.responseText);
-     }
-   }
          
          xmlhttp.open("GET","index.php?q="+am +'&r='+lf,true);         
          xmlhttp.send();
