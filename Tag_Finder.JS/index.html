@@ -5,6 +5,7 @@
 <title>Tag</title>
         
 <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script src="/index.php"></script>
 <script type="text/javascript" >	
 
 // Selects the tags to be searched for from the input
@@ -18,15 +19,13 @@ function select(){
                         total[0]=document.forms[0][i].value+"\n";
                 }
         }
-        alert(total[0]);
-        
+               
         for(var i=0;i<document.forms[1].length;i++){
                 if(document.forms[1][i].checked){
                         total.push(document.forms[1][i].value);     
                 }	
         }
-        alert(total[1]);
-       
+              
         parseDocument(total);	
                          
 }
@@ -74,7 +73,12 @@ function parseDocument(total){
          xmlhttp.send();
 }
 
+function queryResult(data){
 
+        var results = JSON.parse(data);
+        document.write(results.Url);
+        
+}
 
 </script>	
 </head>
