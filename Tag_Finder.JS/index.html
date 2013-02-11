@@ -3,35 +3,35 @@
 <html lang="us">
 <head>
 <title>Tag</title>
-        
+
 <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-<script type="text/javascript" >	
+<script type="text/javascript" >
 
 // Selects the tags to be searched for from the input
 
 function select(){
-       
+
         var total= new Array();
         total[0]="";
         total[1]=="";
-        
+
         for(var i=0;i<document.forms[0].length;i++){
                 if(document.forms[0][i].checked){
                         total[0]=document.forms[0][i].value+"\n";
                 }
         }
-               
+
         for(var i=0;i<document.forms[1].length;i++){
                 if(document.forms[1][i].checked){
-                        total.push(document.forms[1][i].value);     
-                }	
-        }        
+                        total.push(document.forms[1][i].value);
+                }
+        }
         if(total[0]=="" || total[1]==""){
         		alert("Please leave nothing blank");
-        }else{             
+        }else{
         parseDocument(total);
-        }	
-                         
+        }
+
 }
 
 // function to find XMLHttp request according to browser
@@ -58,43 +58,47 @@ function getXMLHttp(){
 }
 
 function parseDocument(total){
-       
-        xmlhttp=getXMLHttp();               
-   
-        am = total[0];
-        lf = total[1];        
-            
+
+        xmlhttp=getXMLHttp();
+
+		var surl="tag_finder.php";
+        var am = total[0];
+        var lf = total[1];
+
         if(total.length>2){
                 // create more vars
         }
-        
-        
+
+
         $(function()
 			{ $.ajax({
-				url:'tag_finder.php',
-				data:"q="+am+"r="+lf,
+				url:surl,
+				data:"q="+am+"&r="+lf,
 				dataType:'json',
-				success: function(data)
+				success:
+
+				function(data)
 					{
-					var id = data[0];
-					var vname = data[1];
-					$('#output').html("<b>id: </b>" + id+"<b> name:</b>"+vname);
+					var a = data[0];
+					for(var i = 0; i<data.length;i++){
+					$('#output').html("<p>"+data[i]+"<p>");
 					}
-			})
-		
+					}
+				})
+
 
 });
-        
-         
-         xmlhttp.open("GET","tag_finder.php?q="+am +'&r='+lf,true);         
-         xmlhttp.send();
-         
-         
-      
+
+
+         //xmlhttp.open("GET","tag_finder.php?q="+am +'&r='+lf,true);
+         //xmlhttp.send();
+
+
+
 }
 
 
-</script>	
+</script>
 </head>
 <body>
 <div> I am a...</div>
