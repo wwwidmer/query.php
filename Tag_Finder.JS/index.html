@@ -12,6 +12,8 @@
 function select(){
        
         var total= new Array();
+        total[0]="";
+        total[1]=="";
         
         for(var i=0;i<document.forms[0].length;i++){
                 if(document.forms[0][i].checked){
@@ -23,9 +25,12 @@ function select(){
                 if(document.forms[1][i].checked){
                         total.push(document.forms[1][i].value);     
                 }	
-        }
-              
-        parseDocument(total);	
+        }        
+        if(total[0]=="" || total[1]==""){
+        		alert("Please leave nothing blank");
+        }else{             
+        parseDocument(total);
+        }	
                          
 }
 
@@ -55,29 +60,39 @@ function getXMLHttp(){
 function parseDocument(total){
        
         xmlhttp=getXMLHttp();               
-        xmlhttp.onreadystatechange = function(){
-                if(xmlhttp.readyState == 4){
-                        HandleResponse(xmlhttp.responseText);
-                        }
-        }
-         
+   
         am = total[0];
-        lf = total[1];
-        
+        lf = total[1];        
+            
         if(total.length>2){
                 // create more vars
         }
+        
+        
+        $(function()
+			{ $.ajax({
+				url:'tag_finder.php',
+				data:"q="+am+"r="+lf,
+				dataType:'json',
+				success: function(data)
+					{
+					var id = data[0];
+					var vname = data[1];
+					$('#output').html("<b>id: </b>" + id+"<b> name:</b>"+vname);
+					}
+			})
+		
+
+});
+        
          
          xmlhttp.open("GET","tag_finder.php?q="+am +'&r='+lf,true);         
          xmlhttp.send();
+         
+         
+      
 }
 
-function queryResult(data){
-
-        var results = JSON.parse(data);
-        document.write(results.Url);
-        
-}
 
 </script>	
 </head>
@@ -94,6 +109,7 @@ function queryResult(data){
 <input type="checkbox" name="IAMA2" value="2"> 2 <br>
 <input type="checkbox" name="IAMA3" value="3"> 3 <br>
 </form>
+  <div id="output">this element will be accessed by jquery and this text replaced</div>
 <tr ><td align=center >
 <button value=Submit onclick="select()">Submit</button><br/>
 
