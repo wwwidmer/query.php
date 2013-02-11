@@ -1,8 +1,8 @@
-<php
+<?php
 
-$q_GET["q"];
-$r_GET["r"];
 
+$q=$_GET['q'];
+$r=$_GET['r'];
 
 // mysql connection
 
@@ -32,7 +32,6 @@ echo json_encode($data);
 
   
 ?>
-
 
 
 
