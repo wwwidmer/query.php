@@ -40,8 +40,3 @@ echo json_encode($data);
   
 ?>
 
-<html>
-<body>
-wdasdsad
-</body>
-</html>
