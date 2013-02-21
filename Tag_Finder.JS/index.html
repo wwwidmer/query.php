@@ -29,39 +29,17 @@ function select(){
         if(total[0]=="" || total[1]==""){
         		alert("Please leave nothing blank");
         }else{
-        parseDocument(total);
+        parser(total);
         }
 
 }
 
 // function to find XMLHttp request according to browser
 
-function getXMLHttp(){
-  var xmlHttp;
-   try{
-     //Firefox, Opera 8.0+, Safari
-     xmlHttp = new XMLHttpRequest();
-   } catch(e){
-     //Internet Explorer
-     try {
-       xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
-     } catch(e){
-       try {
-         xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-       } catch(e){
-         alert("Your browser does not support AJAX")
-         return false;
-       }
-     }
-   }
-   return xmlHttp;
-}
 
-function parseDocument(total){
+function parser(total){
 
-        xmlhttp=getXMLHttp();
-
-		var surl="tag_finder.php";
+        var surl="tag_finder.php";
         var am = total[0];
         var lf = total[1];
 
@@ -90,8 +68,7 @@ function parseDocument(total){
 });
 
 
-         //xmlhttp.open("GET","tag_finder.php?q="+am +'&r='+lf,true);
-         //xmlhttp.send();
+        
 
 
 
@@ -113,7 +90,7 @@ function parseDocument(total){
 <input type="checkbox" name="IAMA2" value="2"> 2 <br>
 <input type="checkbox" name="IAMA3" value="3"> 3 <br>
 </form>
-  <div id="output">this element will be accessed by jquery and this text replaced</div>
+  <div id="output"></div>
 <tr ><td align=center >
 <button value=Submit onclick="select()">Submit</button><br/>
 
