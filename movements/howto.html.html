@@ -100,7 +100,6 @@
 					data:"q="+am+"&r="+lf,
 					dataType:'json',
 					success:
-
 					function(data)
 						{
 							$('#output').append("<br /> <p>Results</p> <ul>");							
@@ -119,10 +118,13 @@
 		$.ajax({
 			url: "meta_tag.php";
 			data: "q="+URL;
-			dataType: text;
-			success: description=data;
-			return description;			
+			dataType: 'text';
+			success:
+			function(data){
+				description=data;
+			}
 		})		
+		return description;
 	}
 </script>
 
