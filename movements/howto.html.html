@@ -61,19 +61,16 @@
     </script>
 
     <script type="text/javascript">
-    function select(){
-	        var total= new Array();
-	        total[0]="";
-	        total[1]="";
-
-	       total[0]= $("input:radio[name='iama']:checked").val();
-			
+	function select(){
+	       var total= new Array();
+	       total[0]="";
+	       total[1]="";
+	       total[0]= $("input:radio[name='iama']:checked").val();			
 	       for(var i=0;i<lookFor.length;i++){
 	                if(lookFor[i].checked){
 	                        total[1]=(lookFor[i].value);
 	                }
 	        }
-
 		if?(total[0]=="cu"){
 			
 		} else if(total[0]=="" || total[1]==""){
@@ -81,41 +78,33 @@
 	        }else{
 	        ajaxCaller(total);
 	        }
-
 	}
 
 
 	function ajaxCaller(total){
-
 	        var surl="tag_finder.php";
 	        var am = total[0];
 	        var lf = total[1];
-			  $('#output').empty();
-	        if(total.length>2){
-	                // create more vars
-	        }
-
-
+	        $('#output').empty();
 	        $(function(){ $.ajax({
 					url:surl,
 					data:"q="+am+"&r="+lf,
 					dataType:'json',
 					success:
-					function(data)
-						{
-							$('#output').append("<br /> <p>Results</p> <ul>");							
-							for(var i = 0; i<data.length;i++){	
-								var metaTag = metaTagger(data[i][1]);
-								$('#output').append('<br /><li><a href="'+data[i][1]+'">'+data[i][0]+"</a>"+metaTag+"</li>");
-							}
-							$('#output').append("</ul>");
+					function(data){
+						$('#output').append("<br /> <p>Results</p> <ul>");							
+						for(var i = 0; i<data.length;i++){	
+							var metaTag = metaTagger("");
+							$('#output').append('<br /><li><a href="'+data[i][1]+'">'+data[i][0]+"</a>"+metaTag+"</li>");
+						}
+						$('#output').append("</ul>");
 						}
 					}) 
 		});
-	}
-	
+	}	
 	function metaTagger(url){
 		var description="";
+		alert("sdfs");
 		$.ajax({
 			url: "meta_tag.php",
 			data: "q="+url,
@@ -131,21 +120,17 @@
 
 <script type="text/javascript" > 
 	$(document).ready(function() {
-		var valueofama="";
-		
+		var valueofama="";		
 		$("input[name='iama']").change(function(){
     		valueofama= $("input:radio[name='iama']:checked").val();
     		tagSetter(valueofama);
 		});
-	});
-	
-	function tagSetter(amaValue){
-	 	
+	});	
+	function tagSetter(amaValue){	 	
 		for(var i =0;i<10;i++){			
 				$("label[for='IAMA"+i+"']").css('color','gray');	
 				$("input[name='IAMA"+i+"']").attr('checked', false);	
-		}	
-	
+		}		
 		switch(amaValue){
 			case 'activist':
 				$("label[for='IAMA2']").css('color','black')
