@@ -129,30 +129,41 @@
 	});	
 	function tagSetter(amaValue){	 	
 		for(var i =0;i<10;i++){			
-				$("label[for='IAMA"+i+"']").css('color','gray');	
+				$("label[for='IAMA"+i+"']").css('color','gray');
+				$("label[for='IAMA"+i+"']").css('font-weight','normal');	
 				$("input[name='IAMA"+i+"']").attr('checked', false);	
 		}		
 		switch(amaValue){
 			case 'activist':
 				$("label[for='IAMA2']").css('color','black')
+				$("label[for='IAMA2']").css('font-weight','bold');				
 				$("label[for='IAMA1']").css('color','black')
-				$("label[for='IAMA5']").css('color','black')
-				$("label[for='IAMA6']").css('color','black')
+				$("label[for='IAMA1']").css('font-weight','bold');
+				$("label[for='IAMA4']").css('color','black')
+				$("label[for='IAMA4']").css('font-weight','bold');
+				$("label[for='IAMA6']").css('color','black')				
+				$("label[for='IAMA6']").css('font-weight','bold');
 			break;
 			case 'reporter':
 				$("label[for='IAMA1']").css('color','black')
+				$("label[for='IAMA1']").css('font-weight','bold');
 				$("label[for='IAMA4']").css('color','black')
+				$("label[for='IAMA4']").css('font-weight','bold');
 				$("label[for='IAMA8']").css('color','black')
+				$("label[for='IAMA8']").css('font-weight','bold');
 			break;
 			case 'researcher':
 				$("label[for='IAMA3']").css('color','black')
+				$("label[for='IAMA3']").css('font-weight','bold');
 				$("label[for='IAMA2']").css('color','black')
+				$("label[for='IAMA2']").css('font-weight','bold');
 			break;
 			case 'cu':
 			break;
 		}	
 	}	
 </script>
+
 
 
 
