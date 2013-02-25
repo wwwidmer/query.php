@@ -175,88 +175,13 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 
 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=7022d79f-20c2-4742-8ca0-c7e8816a4e60&"></script> 
 
-
-
-
     <div id="main-content">
        <div id="text-block">
 
        </div><!-- /#text-block -->
     </div><!-- /#main-content -->
 
-  <div id="sidebar">
-     
-
-     
-
-     
-
-
-
-<div id="promo">
-    
-    <div class="entry">
-            <a href="http://www.movements.org/pages/1375/" title="#iWeiwei Campaign Instructions"><img src="http://www.movements.org/page/-/images/content/promo/iWeiwei_Graphic_Mini.jpg" alt="#iWeiwei Campaign Instructions" class="module" /></a>
-                </div>
-    
-    <div class="entry">
-            <a href="http://www.movements.org/blog/entry/twitter-lists/" title="Twitter Lists"><img src="http://www.movements.org/page/-/images/content/promo/Twitter_Lists_Promotion_Button_3.png" alt="Twitter Lists" class="module" /></a>
-                </div>
-    
-    <div class="entry">
-            <a href="http://www.movements.org/pages/881/" title="Country Profiles"><img src="http://www.movements.org/page/-/images/content/promo/country_profilesjpg_4.png" alt="Country Profiles" class="module" /></a>
-                </div>
-    
-</div><!-- /#promo -->
-
-
-
-
-<div id="side-fb">
-                <ul>
-                    <li><a  id="facebook" href="http://www.facebook.com/pages/The-Alliance-of-Youth-Movements/156471759840">Became a Facebook Fan</a></li>  
-                </ul>
-<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like-box href="http://www.facebook.com/allianceforyouthmovements" width="300" show_faces="true" stream="false" header="false"></fb:like-box>
-</div>
-
-    <div id="action" class="module clearfix">
-       
-                <ul>
-                    
-                    <li><a  id="twitter" href="http://www.twitter.com/aym">Follow us on Twitter</a></li>
-                </ul>
-            	<div id="twitter-fall">
-                 
-            	    <script src="http://widgets.twimg.com/j/2/widget.js"></script>
-            	    <script>
-            	    new TWTR.Widget({
-            	      version: 2,
-            	      type: 'search',
-            	      search: 'from:aym',
-            	      interval: 6000,
-            	      title: '',
-            	      subject: '',
-            	      width: 265,
-            	      height: 300,
-            	      theme: {    shell: { background: '#e5faff', color: '#ffffff' }, tweets: { background: '#e5faff', color: '#8b8b8b',links: '#1985b5' } },
-            	      features: { scrollbar: false, loop: false, live: false, hashtags: true, timestamp: true, avatars: false, toptweets: true, behavior: 'all' }
-            	      }).render().start();
-            	    </script>
-                        <p id="twitter-more"><a href="http://twitter.com/#search?q=@aym">More Tweets</a> | <a href="http://www.twitter.com/aym">Follow us on Twitter</a></p>
-                </div><!-- /#twitter-fall -->
-
-    </div><!-- /#action -->
-    <div id="division" class="module clearfix">
-        A division of:
-        <a href="http://advancinghumanrights.org/" style="display:table;margin:1em auto;"><img src="http://www.movements.org/page/-/images/ahrbanner.png" /></a>
-    </div><!-- /#division -->
-</div>
-
-
-
-
-
-</div><!-- /#content -->
+ </div><!-- /#content -->
 
     <div id="footer" class="clearfix">
             	<img id="footer-logo" src="/page/-/images/footer/footer-logo.gif" alt="Movements.org - Alliance for Youth Movements" />
