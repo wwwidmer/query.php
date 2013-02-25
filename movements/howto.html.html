@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
@@ -31,23 +30,24 @@
 <meta name='DC.rights' scheme='DCTERMS.URI' content='' />
 <meta name='DC.format' content='text/html' />
 <meta name='DC.identifier' scheme='DCTERMS.URI' content='http://www.movements.org/how-to/' />
-    
+
 
     <link rel="shortcut icon" href="/page/-/images/header/favicon.png" type="image/x-icon" />
     <link type="text/css" rel="stylesheet" href="http://www.movements.org/?css=styles/index" media="screen" />
     <link type="text/css" rel="stylesheet" href="http://www.movements.org/?css=styles/print" media="print" />
     <link type="text/css" rel="stylesheet" href="http://www.movements.org/?css=styles/superfish" media="screen" />
     <link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css" type="text/css" />
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.movements.org/blog/rss/" /> 
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.movements.org/blog/rss/" />
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     <script type="text/javascript" src="/index_ee.php/js/source/"></script>
     <script type="text/javascript" src="/index_ee.php/js/index"></script>
+    <script type="text/javascropt" src-"/tagfinder.js"></script>
 
     <!--[if IE 6]>
       <link type="text/css" rel="stylesheet" href="http://www.movements.org/?css=styles/ie6"/>
     <![endif]-->
-    
+
 
     <script type="text/javascript">
         var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -59,7 +59,105 @@
         pageTracker._trackPageview();
         } catch(err) {}
     </script>
-        
+
+    <script type="text/javascript">
+    function select(){
+	        var total= new Array();
+	        total[0]="";
+	        total[1]="";
+
+	       total[0]= $("input:radio[name='iama']:checked").val();
+			
+	       for(var i=0;i<lookFor.length;i++){
+	                if(lookFor[i].checked){
+	                        total[1]=(lookFor[i].value);
+	                }
+	        }
+
+	        if(total[0]=="" || total[1]==""){
+	        		alert("Please leave nothing blank");
+	        }else{
+	        ajaxCaller(total);
+	        }
+
+	}
+
+
+	function ajaxCaller(total){
+
+	        var surl="tag_finder.php";
+	        var am = total[0];
+	        var lf = total[1];
+			  $('#output').empty();
+	        if(total.length>2){
+	                // create more vars
+	        }
+
+
+	        $(function()
+				{ $.ajax({
+					url:surl,
+					data:"q="+am+"&r="+lf,
+					dataType:'json',
+					success:
+
+					function(data)
+						{
+							$('#output').append("<br /> <p>Results</p> <ul>");
+							
+							for(var i = 1; i<data.length;i++){												
+							$('#output').append('<br /><li><a href="'+data[i][1]+'">'+data[i][0]+"</a></li>");
+							}
+							$('#output').append("</ul>");
+						}
+					}) 
+		});
+	}
+</script>
+
+<script type="text/javascript" > 
+	$(document).ready(function() {
+		var valueofama="";
+		
+		$("input[name='iama']").change(function(){
+    		valueofama= $("input:radio[name='iama']:checked").val();
+    		tagSetter(valueofama);
+		});
+	});
+	
+	function tagSetter(amaValue){
+	 	
+		for(var i =0;i<10;i++){			
+				$("label[for='IAMA"+i+"']").css('color','gray');	
+				$("input[name='IAMA"+i+"']").attr('checked', false);	
+		}	
+	
+		switch(amaValue){
+			case 'activist':
+				$("label[for='IAMA2']").css('color','black')
+				$("label[for='IAMA1']").css('color','black')
+				$("label[for='IAMA5']").css('color','black')
+				$("label[for='IAMA6']").css('color','black')
+			break;
+			case 'reporter':
+				$("label[for='IAMA1']").css('color','black')
+				$("label[for='IAMA4']").css('color','black')
+				$("label[for='IAMA8']").css('color','black')
+			break;
+			case 'researcher':
+				$("label[for='IAMA3']").css('color','black')
+				$("label[for='IAMA2']").css('color','black')
+			break;
+			case 'cu':
+			break;
+		}	
+	}	
+</script>
+
+
+
+
+
     <!-- blue_source_tracking enabled -->
 
 <meta name="google-site-verification"
@@ -71,7 +169,7 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 <div id="wrap">
       <div id="header" class="clearfix">
             <div id="logo">
-                <a href="/"><img src="/page/-/images/logo-red-head.png" alt="Movements.org" /></a>
+                <a href="/"><img src="logo-red-head.png" alt="Movements.org" /></a>
             </div>
 
       <script src="/page/-/js/google-search.js" type="text/javascript"></script>
@@ -99,11 +197,11 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 
                     <label for="quick-email">Enter Email Address</label>
                     <input type="text" id="quick-email" name="email" class="text" style="background: #fff;" />
-        
+
 
 
                     <textarea id="quick-story" name="custom-97" rows="5" cols="10" class="story textarea">How have you used digital media in a movement?</textarea>
-        
+
                     <input type="image" id="quick-submit" value="join us" class="quick-submit"  src="/page/-/images/content/sign-up-button.png" />
                     </fieldset>
                 </form>
@@ -121,7 +219,7 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
                         <li><a href="/how-to/c/facebook-activism">Facebook</a></li>
                         <li><a href="http://www.movements.org/how-to/c/microblogging">Twitter</a></li>
                         <li><a href="http://www.movements.org/how-to/c/mobiles/">Mobile</a></li>
-                        <li><a href="http://www.movements.org/how-to/c/e-mail/">Email</a></li> 
+                        <li><a href="http://www.movements.org/how-to/c/e-mail/">Email</a></li>
                         <li><a href="/how-to/c/video-for-change/">Video</a></li>
                         <li><a href="/how-to/">See More &raquo;</a></li>
                     </ul>
@@ -166,7 +264,7 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 
 
                <!-- <li id="donate-nav" class="button small"><a href="/contribute/">DONATE</a></li>    -->
-            </ul>   
+            </ul>
         </div><!-- /#nav -->
                                </div><!-- /#header -->
     <div id="content" class="clearfix">
@@ -191,213 +289,204 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 
 <div id="main-content">
   <div id="text-block">
-    <div class="module"> 
-      
-      
-      <h1>How To</h1>
-      
-      <p> 
-<strong>The Movements.org how-to guides identify best practices for the use of digital technologies for social change. 
+    <div class="module">
 
-<!-- WORK AREA --!>
+
+      <h2>How To</h2>
+
+      <p>
+<strong>The Movements.org how-to guides identify best practices for the use of digital technologies for social change.
+</strong>
 <!-- WORK AREA --!>
 
-<!-- WORK AREA --!>
-<!-- WORK AREA --!>
-<!-- WORK AREA --!>
-<!-- WORK AREA --!>
-<!-- WORK AREA --!>
-<!-- WORK AREA --!>
-<!-- WORK AREA --!>
-<!-- WORK AREA --!>
-<!-- WORK AREA --!>
 <!-- WORK AREA -->
 
 
 <h2> I am a(n)...</h2>
 
-<form id="iAma">
-<input type="radio" name="IAM" value="a"> Activist<br>
-<input type="radio" name="IAM" value="b"> Reporter <br>
-<input type="radio" name="IAM" value="c"> Researcher <br>
+<form id="iamma">
+<input type="radio" name="iama" value="activist"> Activist<br>
+<input type="radio" name="iama" value="reporter"> Reporter <br>
+<input type="radio" name="iama" value="researcher"> Researcher <br>
+<input type="radio" name="iama" value = "cu"> Curious <br>
 
 </form>
 
 <h1> Looking to... </h1>
 <form id="lookFor">
-<input type="checkbox" name="IAMA1" value="protest"> Learn how to protest<br>
-<input type="checkbox" name="IAMA2" value="safety"> Stay safe <br>
-<input type="checkbox" name="IAMA3" value="online"> Be anonymous <br>
-<input type="checkbox" name="IAMA4" value="sme"> Something else<br>
-<input type="checkbox" name="IAMA5" value="sme2"> Something else <br>
-<input type="checkbox" name="IAMA6" value="sme3"> Something else <br>
-<input type="checkbox" name="IAMA7" value="sme4"> Something else<br>
-<input type="checkbox" name="IAMA8" value="sme5"> Something else <br>
-<input type="checkbox" name="IAMA9" value="sme6"> Something else <br>
+<input id="IAMA1" type="checkbox" name="IAMA1" value="planstrategize"> <label for="IAMA1">Plan And Strategize</label><br>
+<input type="checkbox" name="IAMA2" value="buildawareness"> <label for="IAMA2">Build Awareness </label><br>
+<input type="checkbox" name="IAMA3" value="mobilize"> <label for="IAMA3">Mobilize</label> <br>
+<input type="checkbox" name="IAMA4" value="staysafe"> <label for="IAMA4">Stay Safe</label> <br>
+<input type="checkbox" name="IAMA5" value="accessinformation"> <label for="IAMA5">Access Blocked Information</label> <br>
+<input type="checkbox" name="IAMA6" value="collaborate"><label for="IAMA6"> Collaborate</label><br>
+<input type="checkbox" name="IAMA7" value="fundraise"><label for="IAMA7"> Fundraise</label> <br>
+<input type="checkbox" name="IAMA8" value="keepsupportersengaged"> <label for="IAMA8">Keep Supporters Engaged </label><br>
+<input type="checkbox" name="IAMA9" value="sme6"><label for="IAMA9"> PlaceHolder</label> <br>
 
 </form>
+
 <tr ><td align=center >
-<button value=Submit onclick="select()">Submit</button><br/>
-
-<a href="#other"> Or if you fit into none of the above categories...</a>
-
-
-<h3>TOPICS:</h3><a href="http://www.movements.org/how-to/c/plan-and-strategize/">I. Plan and Strategize</a>&nbsp;&nbsp; &nbsp;&nbsp;<a href="http://www.movements.org/how-to/c/build-awareness">II. Build Awareness</a>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;<a href="http://www.movements.org/how-to/c/mobilize/">III. Mobilize</a>&nbsp;&nbsp; &nbsp; <a href="http://www.movements.org/how-to/c/stay-safe/">IV. Stay Safe</a>&nbsp;&nbsp; &nbsp;&nbsp;<a href="http://www.movements.org/how-to/c/access-blocked-information/">V. Access Blocked Information</a>&nbsp;&nbsp; &nbsp;&nbsp;<a href="http://www.movements.org/how-to/c/collaborative/">VI. Collaborate</a>&nbsp;&nbsp; &nbsp;&nbsp;<a href="http://www.movements.org/how-to/c/funding/">VII. Fundraise</a>&nbsp;&nbsp; &nbsp;&nbsp;<a href="http://www.movements.org/how-to/c/keep-supporters-engaged/">VIII. Keep Supporters Engaged</a></strong>
+<button value=Submit onclick="select()">Submit</button>
+<br/>
+<div id = "output"> </div>
+<br>
+<a href="www.noURLyet.org"> Emergency </a><br>
 
 <!-- These how-to guides attempt to identify the tools and tactics that are most effective in a variety of situations. Best practices are always changing, so add your experiences in the comments and we'll be sure to incorporate them! --></p>
        </div>
-        <div class="module callout clearfix"> 
-      
+        <div class="module callout clearfix">
+
             <div id="callout-text">
         <h3><a href="http://www.movements.org/how-to/entry/how-to-protect-your-online-security-in-cyber-cafes/">How To Protect Your Online Security in Cyber Cafes</a></h3>
         <p></p>
       </div>
       <!-- /#callout-text -->
-      
+
        </div>
     <!-- /.module callout -->
         <div class="module clearfix">
       <div class="sub-cat left">
 	<div id=other> </div>
         <h3><a href="http://www.movements.org/how-to/c/plan-and-strategize/">Plan and Strategize</a></h3>
-        
+
         <div class="entry">           <div class="pic"><a href="http://www.movements.org/how-to/entry/make-sure-social-movements-momentum-strong-over-time-/" title="How To Make Sure Your Movement Stays Strong Over Time"><img src="http://www.movements.org/page/-/images/content/how-to/thumbnails/IncreaseTraffic_1.jpg" alt="How To Make Sure Your Movement Stays Strong Over Time" /></a></div>
                     <h4><a href="http://www.movements.org/how-to/entry/make-sure-social-movements-momentum-strong-over-time-/" title="How To Make Sure Your Movement Stays Strong Over Time">How To Make Sure Your Movement Stays Strong Over Time</a></h4>
-          <p class="meta">  Posted <em>by</em> 
-                        
+          <p class="meta">  Posted <em>by</em>
+
                         Susannah Vila
-                        
-                        
+
+
                         in
-             
+
              <a href="/how-to/c/keep-supporters-engaged">Keep Supporters Engaged</a>,  <a href="/how-to/c/plan-and-strategize">Plan and Strategize</a> </p>
           <!-- /.meta -->
           <a href="http://www.movements.org/how-to/c/plan-and-strategize/" class="more" title="Read More">More <img src="/page/-/images/content/4-7-right-arrow.png" alt="Read More Button" /></a> </div>
         <!-- /.entry -->
-        
+
         </div>
         <!-- /.sub-cat -->
         <div class="sub-cat right">
         <h3><a href="http://www.movements.org/how-to/c/build-awareness">Build Awareness</a></h3>
-        
+
         <div class="entry">           <div class="pic"><a href="http://www.movements.org/how-to/entry/how-to-build-awareness-and-get-more-supporters/" title="How To Build Awareness and Get More Supporters"><img src="http://www.movements.org/page/-/images/content/how-to/thumbnails/protest.jpg" alt="How To Build Awareness and Get More Supporters" /></a></div>
                     <h4><a href="http://www.movements.org/how-to/entry/how-to-build-awareness-and-get-more-supporters/" title="How To Build Awareness and Get More Supporters">How To Build Awareness and Get More Supporters</a></h4>
-          <p class="meta">  Posted <em>by</em> 
-             <a href="http://www.twitter.com/susannahvila">Susannah Vila</a>             
-                        
-                        
+          <p class="meta">  Posted <em>by</em>
+             <a href="http://www.twitter.com/susannahvila">Susannah Vila</a>
+
+
                         in
-             
+
              <a href="/how-to/c/build-awareness">Build Awareness </a> </p>
           <!-- /.meta -->
           <a href="http://www.movements.org/how-to/c/build-awareness-and-mobilize/" class="more" title="Read More">More <img src="/page/-/images/content/4-7-right-arrow.png" alt="Read More Button" /></a> </div>
         <!-- /.entry -->
-        
+
         </div>
         <!-- /.sub-cat -->
         <div class="sub-cat left">
         <h3><a href="http://www.movements.org/how-to/c/mobilize/">Mobilize</a></h3>
-        
+
         <div class="entry">           <div class="pic"><a href="http://www.movements.org/how-to/entry/utilizing-blackberry-messenger-for-organizing-purposes/" title="How to Use BlackBerry Messaging (BBM) to Organize NonViolent Action"><img src="http://www.movements.org/page/-/images/content/how-to/thumbnails/BBM-icon_white.jpg" alt="How to Use BlackBerry Messaging (BBM) to Organize NonViolent Action" /></a></div>
                     <h4><a href="http://www.movements.org/how-to/entry/utilizing-blackberry-messenger-for-organizing-purposes/" title="How to Use BlackBerry Messaging (BBM) to Organize NonViolent Action">How to Use BlackBerry Messaging (BBM) to Organize NonViolent Action</a></h4>
-          <p class="meta">  Posted <em>by</em> 
-             <a href="www.twitter.com/afsaras">Afsanieh Rassti</a>             
-                        
-                        
+          <p class="meta">  Posted <em>by</em>
+             <a href="www.twitter.com/afsaras">Afsanieh Rassti</a>
+
+
                         in
-             
+
              <a href="/how-to/c/build-awareness">Build Awareness </a>,  <a href="/how-to/c/attract-supporters">Attract Supporters</a>,  <a href="/how-to/c/event-planning">Event Planning</a>,  <a href="/how-to/c/social-media-for-good">Social Media for Social Good</a>,  <a href="/how-to/c/mobilize">Mobilize</a>,  <a href="/how-to/c/plan-and-strategize">Plan and Strategize</a> </p>
           <!-- /.meta -->
           <a href="http://www.movements.org/how-to/c/mobilize/" class="more" title="Read More">More <img src="/page/-/images/content/4-7-right-arrow.png" alt="Read More Button" /></a> </div>
         <!-- /.entry -->
-        
+
         </div>
         <!-- /.sub-cat -->
         <div class="sub-cat right">
         <h3><a href="http://www.movements.org/how-to/c/stay-safe/">Stay Safe</a></h3>
-        
+
         <div class="entry">           <div class="pic"><a href="http://www.movements.org/how-to/entry/how-to-protect-your-online-security-in-cyber-cafes/" title="How To Protect Your Online Security in Cyber Cafes"><img src="http://www.movements.org/page/-/images/content/how-to/thumbnails/Cyber-Security-Pic_1.jpg" alt="How To Protect Your Online Security in Cyber Cafes" /></a></div>
                     <h4><a href="http://www.movements.org/how-to/entry/how-to-protect-your-online-security-in-cyber-cafes/" title="How To Protect Your Online Security in Cyber Cafes">How To Protect Your Online Security in Cyber Cafes</a></h4>
-          <p class="meta">  Posted <em>by</em> 
-             <a href="http://twitter.com/#!/jimmydcarr">Jimmy Carr</a>             
-                        
-                        
+          <p class="meta">  Posted <em>by</em>
+             <a href="http://twitter.com/#!/jimmydcarr">Jimmy Carr</a>
+
+
                         in
-             
+
              <a href="/how-to/c/stay-safe">Stay Safe and Anonymous Online</a>,  <a href="/how-to/c/desktop-security">Desktop Digital Security</a>,  <a href="/how-to/c/mobile-security">Mobile Digital Security</a> </p>
           <!-- /.meta -->
           <a href="http://www.movements.org/how-to/c/stay-safe/" class="more" title="Read More">More <img src="/page/-/images/content/4-7-right-arrow.png" alt="Read More Button" /></a> </div>
         <!-- /.entry -->
-        
+
         </div><!-- /.sub-cat -->
         <div class="sub-cat left">
         <h3><a href="http://www.movements.org/how-to/c/access-blocked-information/">Access Blocked Information</a></h3>
-        
+
         <div class="entry">           <div class="pic"><a href="http://www.movements.org/how-to/entry/how-to-get-past-internet-filtering-if-you-arent-concerned-about-being-detec/" title="How to get past Internet filtering (if you aren&#8217;t concerned about being detected or monitored)"><img src="http://www.movements.org/page/-/images/content/how-to/thumbnails/067thirdparty.png" alt="How to get past Internet filtering (if you aren&#8217;t concerned about being detected or monitored)" /></a></div>
                     <h4><a href="http://www.movements.org/how-to/entry/how-to-get-past-internet-filtering-if-you-arent-concerned-about-being-detec/" title="How to get past Internet filtering (if you aren&#8217;t concerned about being detected or monitored)">How to get past Internet filtering (if you aren&#8217;t concerned about being detected or monitored)</a></h4>
-          <p class="meta">  Posted <em>by</em> 
-             <a href="http://en.flossmanuals.net/bypassing-censorship/ch010_simple-tricks/">http://www.howtobypassinternetcensorship.org/</a>             
-                        
-                        
+          <p class="meta">  Posted <em>by</em>
+             <a href="http://en.flossmanuals.net/bypassing-censorship/ch010_simple-tricks/">http://www.howtobypassinternetcensorship.org/</a>
+
+
                         in
-             
+
              <a href="/how-to/c/access-blocked-information">Access Blocked Information</a>,  <a href="/how-to/c/stay-safe">Stay Safe and Anonymous Online</a> </p>
           <!-- /.meta -->
           <a href="http://www.movements.org/how-to/c/access-blocked-information/" class="more" title="Read More">More <img src="/page/-/images/content/4-7-right-arrow.png" alt="Read More Button" /></a> </div>
         <!-- /.entry -->
-        
+
         </div>
         <!-- /.sub-cat -->
         <div class="sub-cat right">
              <h3><a href="http://www.movements.org/how-to/c/collaborative/">Collaborate</a></h3>
-             
+
              <div class="entry">
                  <div class="pic"><a href="http://www.movements.org/how-to/entry/how-to-make-free-calls-and-send-free-texts-with-viber/" title="How to make free calls and send free texts with Viber"><img src="http://www.movements.org/page/-/images/content/how-to/thumbnails/viber.jpeg" alt="How to make free calls and send free texts with Viber" /></a></div>                 <h4><a href="http://www.movements.org/how-to/entry/how-to-make-free-calls-and-send-free-texts-with-viber/" title="How to make free calls and send free texts with Viber">How to make free calls and send free texts with Viber</a></h4>
                  <p class="meta">
-                    Posted <em>by</em> 
-                       
+                    Posted <em>by</em>
+
                                                           <a href="www.twitter.com/racheljo">Rachel Silver</a>
-                                   
-                                                  
-                           
+
+
+
                                          in
-                    
+
                     <a href="/how-to/c/collaborative">Collaborate Effectively</a>,  <a href="/how-to/c/voice-over-internet-protocol">Voice over Internet Protocol</a>,  <a href="/how-to/c/mobiles">Mobiles Phones in Activism</a>
                  </p><!-- /.meta -->
                  <a href="http://www.movements.org/how-to/c/collaborative/" class="more" title="Read More">More <img src="/page/-/images/content/4-7-right-arrow.png" alt="Read More Button" /></a>
            </div><!-- /.entry -->
-           
+
         </div><!-- /.sub-cat -->
         <div class="sub-cat left">
         <h3><a href="http://www.movements.org/how-to/c/funding/">Fundraise</a></h3>
-        
+
         <div class="entry">           <div class="pic"><a href="http://www.movements.org/how-to/entry/how-to-get-a-short-code/" title="How to get a SMS Short Code"><img src="http://www.movements.org/page/-/images/content/how-to/thumbnails/download_1.jpeg" alt="How to get a SMS Short Code" /></a></div>
                     <h4><a href="http://www.movements.org/how-to/entry/how-to-get-a-short-code/" title="How to get a SMS Short Code">How to get a SMS Short Code</a></h4>
-          <p class="meta">  Posted <em>by</em> 
-             <a href="www.twitter.com/alextolkin">Alex Tolkin</a>             
-                        
-                        
+          <p class="meta">  Posted <em>by</em>
+             <a href="www.twitter.com/alextolkin">Alex Tolkin</a>
+
+
                         in
-             
+
              <a href="/how-to/c/build-awareness">Build Awareness </a>,  <a href="/how-to/c/funding">Fundraise</a>,  <a href="/how-to/c/fundraise-with-mobile-phones">Fundraise with Mobile Phones</a>,  <a href="/how-to/c/mobiles">Mobiles Phones in Activism</a> </p>
           <!-- /.meta -->
           <a href="http://www.movements.org/how-to/c/funding/" class="more" title="Read More">More <img src="/page/-/images/content/4-7-right-arrow.png" alt="Read More Button" /></a> </div>
         <!-- /.entry -->
-        
+
         </div>
         <!-- /.sub-cat -->
         <div class="sub-cat right">
         <h3><a href="http://www.movements.org/how-to/c/keep-supporters-engaged/">Keep Supporters Engaged</a></h3>
-        
+
         <div class="entry">           <h4><a href="http://www.movements.org/how-to/entry/how-to-build-and-keep-an-engaged-audience-infographic/" title="How to Build — and Keep — an Engaged Audience [INFOGRAPHIC]">How to Build — and Keep — an Engaged Audience [INFOGRAPHIC]</a></h4>
-          <p class="meta">             
+          <p class="meta">
                         Posted in
-             
+
              <a href="/how-to/c/build-awareness">Build Awareness </a>,  <a href="/how-to/c/attract-supporters">Attract Supporters</a>,  <a href="/how-to/c/keep-supporters-engaged">Keep Supporters Engaged</a> </p>
           <!-- /.meta -->
           <a href="http://www.movements.org/how-to/c/keep-supporters-engaged/" class="more" title="Read More">More <img src="/page/-/images/content/4-7-right-arrow.png" alt="Read More Button" /></a> </div>
         <!-- /.entry -->
-        
+
         </div><!-- /.sub-cat -->
     </div>
     <!-- /.module -->
@@ -407,13 +496,13 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 <!-- /#main-content -->
 
   <div id="sidebar">
-     
 
-     
+
+
 
     <div id="tag-cloud" class="module">
         <h2>Popular Topics</h2>
-        <a href="http://www.movements.org/how-to/c/access-blocked-information/" style="font-size: 10pt" title="11 entries in Access Blocked Information">Access Blocked Information</a> <a href="http://www.movements.org/how-to/c/attract-supporters/" style="font-size: 13pt" title="25 entries in Attract Supporters">Attract Supporters</a> <a href="http://www.movements.org/how-to/c/blog-for-change/" style="font-size: 10pt" title="14 entries in Blog for Change">Blog for Change</a> <a href="http://www.movements.org/how-to/c/build-awareness/" style="font-size: 24pt" title="66 entries in Build Awareness ">Build Awareness </a> <a href="http://www.movements.org/how-to/c/collaborative/" style="font-size: 11pt" title="18 entries in Collaborate Effectively">Collaborate Effectively</a> <a href="http://www.movements.org/how-to/c/crowdsource/" style="font-size: 11pt" title="16 entries in Crowdsource">Crowdsource</a> <a href="http://www.movements.org/how-to/c/desktop-security/" style="font-size: 11pt" title="15 entries in Desktop Digital Security">Desktop Digital Security</a> <a href="http://www.movements.org/how-to/c/drive-traffic/" style="font-size: 11pt" title="15 entries in Drive Traffic">Drive Traffic</a> <a href="http://www.movements.org/how-to/c/e-mail/" style="font-size: 9pt" title="8 entries in Email Advocacy">Email Advocacy</a> <a href="http://www.movements.org/how-to/c/facebook-activism/" style="font-size: 11pt" title="16 entries in Facebook Activism">Facebook Activism</a> <a href="http://www.movements.org/how-to/c/funding/" style="font-size: 8pt" title="7 entries in Fundraise">Fundraise</a> <a href="http://www.movements.org/how-to/c/keep-supporters-engaged/" style="font-size: 11pt" title="16 entries in Keep Supporters Engaged">Keep Supporters Engaged</a> <a href="http://www.movements.org/how-to/c/mapping-information/" style="font-size: 10pt" title="12 entries in Map Information">Map Information</a> <a href="http://www.movements.org/how-to/c/microblogging/" style="font-size: 9pt" title="8 entries in Microblog">Microblog</a> <a href="http://www.movements.org/how-to/c/mobile-security/" style="font-size: 10pt" title="13 entries in Mobile Digital Security">Mobile Digital Security</a> <a href="http://www.movements.org/how-to/c/mobiles/" style="font-size: 12pt" title="20 entries in Mobiles Phones in Activism">Mobiles Phones in Activism</a> <a href="http://www.movements.org/how-to/c/plan-and-strategize/" style="font-size: 10pt" title="14 entries in Plan and Strategize">Plan and Strategize</a> <a href="http://www.movements.org/how-to/c/social-media-for-good/" style="font-size: 13pt" title="23 entries in Social Media for Social Good">Social Media for Social Good</a> <a href="http://www.movements.org/how-to/c/stay-safe/" style="font-size: 17pt" title="38 entries in Stay Safe and Anonymous Online">Stay Safe and Anonymous Online</a> <a href="http://www.movements.org/how-to/c/video-for-change/" style="font-size: 10pt" title="12 entries in Video for Change">Video for Change</a> 
+        <a href="http://www.movements.org/how-to/c/access-blocked-information/" style="font-size: 10pt" title="11 entries in Access Blocked Information">Access Blocked Information</a> <a href="http://www.movements.org/how-to/c/attract-supporters/" style="font-size: 13pt" title="25 entries in Attract Supporters">Attract Supporters</a> <a href="http://www.movements.org/how-to/c/blog-for-change/" style="font-size: 10pt" title="14 entries in Blog for Change">Blog for Change</a> <a href="http://www.movements.org/how-to/c/build-awareness/" style="font-size: 24pt" title="66 entries in Build Awareness ">Build Awareness </a> <a href="http://www.movements.org/how-to/c/collaborative/" style="font-size: 11pt" title="18 entries in Collaborate Effectively">Collaborate Effectively</a> <a href="http://www.movements.org/how-to/c/crowdsource/" style="font-size: 11pt" title="16 entries in Crowdsource">Crowdsource</a> <a href="http://www.movements.org/how-to/c/desktop-security/" style="font-size: 11pt" title="15 entries in Desktop Digital Security">Desktop Digital Security</a> <a href="http://www.movements.org/how-to/c/drive-traffic/" style="font-size: 11pt" title="15 entries in Drive Traffic">Drive Traffic</a> <a href="http://www.movements.org/how-to/c/e-mail/" style="font-size: 9pt" title="8 entries in Email Advocacy">Email Advocacy</a> <a href="http://www.movements.org/how-to/c/facebook-activism/" style="font-size: 11pt" title="16 entries in Facebook Activism">Facebook Activism</a> <a href="http://www.movements.org/how-to/c/funding/" style="font-size: 8pt" title="7 entries in Fundraise">Fundraise</a> <a href="http://www.movements.org/how-to/c/keep-supporters-engaged/" style="font-size: 11pt" title="16 entries in Keep Supporters Engaged">Keep Supporters Engaged</a> <a href="http://www.movements.org/how-to/c/mapping-information/" style="font-size: 10pt" title="12 entries in Map Information">Map Information</a> <a href="http://www.movements.org/how-to/c/microblogging/" style="font-size: 9pt" title="8 entries in Microblog">Microblog</a> <a href="http://www.movements.org/how-to/c/mobile-security/" style="font-size: 10pt" title="13 entries in Mobile Digital Security">Mobile Digital Security</a> <a href="http://www.movements.org/how-to/c/mobiles/" style="font-size: 12pt" title="20 entries in Mobiles Phones in Activism">Mobiles Phones in Activism</a> <a href="http://www.movements.org/how-to/c/plan-and-strategize/" style="font-size: 10pt" title="14 entries in Plan and Strategize">Plan and Strategize</a> <a href="http://www.movements.org/how-to/c/social-media-for-good/" style="font-size: 13pt" title="23 entries in Social Media for Social Good">Social Media for Social Good</a> <a href="http://www.movements.org/how-to/c/stay-safe/" style="font-size: 17pt" title="38 entries in Stay Safe and Anonymous Online">Stay Safe and Anonymous Online</a> <a href="http://www.movements.org/how-to/c/video-for-change/" style="font-size: 10pt" title="12 entries in Video for Change">Video for Change</a>
     </div>
 <div id="by-tool" class="clearfix module">
        <h2>Browse By Tool</h2>
@@ -437,7 +526,7 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 <p><a href="http://www.movements.org/how-to/c/video-for-change/> Video</a></p>
 <p><a href="http://www.movements.org/how-to/c/mapping-information/"> Ushahidi</a></p>
 
-      
+
  <h2>Friends and Partners</h2>
 
 <p><a href="www.khudipakistan.com">Khudi Pakistan</a></p>
@@ -450,26 +539,26 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 
     </div> -->
 
-    
 
-     
+
+
 
 
 
 <div id="promo">
-    
+
     <div class="entry">
             <a href="http://www.movements.org/pages/1375/" title="#iWeiwei Campaign Instructions"><img src="http://www.movements.org/page/-/images/content/promo/iWeiwei_Graphic_Mini.jpg" alt="#iWeiwei Campaign Instructions" class="module" /></a>
                 </div>
-    
+
     <div class="entry">
             <a href="http://www.movements.org/blog/entry/twitter-lists/" title="Twitter Lists"><img src="http://www.movements.org/page/-/images/content/promo/Twitter_Lists_Promotion_Button_3.png" alt="Twitter Lists" class="module" /></a>
                 </div>
-    
+
     <div class="entry">
             <a href="http://www.movements.org/pages/881/" title="Country Profiles"><img src="http://www.movements.org/page/-/images/content/promo/country_profilesjpg_4.png" alt="Country Profiles" class="module" /></a>
                 </div>
-    
+
 </div><!-- /#promo -->
 
 
@@ -477,19 +566,19 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 
 <div id="side-fb">
                 <ul>
-                    <li><a  id="facebook" href="http://www.facebook.com/pages/The-Alliance-of-Youth-Movements/156471759840">Became a Facebook Fan</a></li>  
+                    <li><a  id="facebook" href="http://www.facebook.com/pages/The-Alliance-of-Youth-Movements/156471759840">Became a Facebook Fan</a></li>
                 </ul>
 <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like-box href="http://www.facebook.com/allianceforyouthmovements" width="300" show_faces="true" stream="false" header="false"></fb:like-box>
 </div>
 
     <div id="action" class="module clearfix">
-       
+
                 <ul>
-                    
+
                     <li><a  id="twitter" href="http://www.twitter.com/aym">Follow us on Twitter</a></li>
                 </ul>
             	<div id="twitter-fall">
-                 
+
             	    <script src="http://widgets.twimg.com/j/2/widget.js"></script>
             	    <script>
             	    new TWTR.Widget({
@@ -542,10 +631,10 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
     <div id="sub-footer">
     <p>copyright &copy;2010 - 2013 by Movements.org <a href="http://www.movements.org/pages/copyright-and-licensing-information">Some rights reserved</a>    |   <a href="/pages/privacy-policy">privacy</a>  |   <a href="mailto:info@movements.org">contact</a></p>
     </div>
-    
-    
-    
-    
+
+
+
+
 	</div><!-- /#wrap -->
 
 <script type="text/javascript">
@@ -560,9 +649,9 @@ Cufon.now();
                   }, 'google_translate_element');
                 }
   </script>
-  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=7022d79f-20c2-4742-8ca0-c7e8816a4e60&"></script> 
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=7022d79f-20c2-4742-8ca0-c7e8816a4e60&"></script>
   <script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  
+
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'movementsorg'; // required: replace example with your forum shortname
@@ -576,17 +665,17 @@ Cufon.now();
     }());
 </script>
 
-<!-- Start of HubSpot Logging Code --> 
-<script type="text/javascript" language="javascript"> 
-var hs_portalid=138790; 
-var hs_salog_version = "2.00"; 
-var hs_ppa = "movements.app11.hubspot.com"; 
-document.write(unescape("%3Cscript src='" + document.location.protocol + 
-"//" + hs_ppa + "/salog.js.aspx' type='text/javascript'%3E%3C/script%3E")); 
-</script> 
+<!-- Start of HubSpot Logging Code -->
+<script type="text/javascript" language="javascript">
+var hs_portalid=138790;
+var hs_salog_version = "2.00";
+var hs_ppa = "movements.app11.hubspot.com";
+document.write(unescape("%3Cscript src='" + document.location.protocol +
+"//" + hs_ppa + "/salog.js.aspx' type='text/javascript'%3E%3C/script%3E"));
+</script>
 <!-- End of HubSpot Logging Code -->
 
 
- <script id="aptureScript" type="text/javascript" src="http://www.apture.com/js/apture.js?siteToken=2xmZRkq"; charset="utf-8"></script> 
+ <script id="aptureScript" type="text/javascript" src="http://www.apture.com/js/apture.js?siteToken=2xmZRkq"; charset="utf-8"></script>
 </body>
 </html>
