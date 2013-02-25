@@ -74,7 +74,9 @@
 	                }
 	        }
 
-	        if(total[0]=="" || total[1]==""){
+		if?(total[0]=="cu"){
+			
+		} else if(total[0]=="" || total[1]==""){
 	        		alert("Please leave nothing blank");
 	        }else{
 	        ajaxCaller(total);
@@ -94,8 +96,7 @@
 	        }
 
 
-	        $(function()
-				{ $.ajax({
+	        $(function(){ $.ajax({
 					url:surl,
 					data:"q="+am+"&r="+lf,
 					dataType:'json',
@@ -104,7 +105,7 @@
 						{
 							$('#output').append("<br /> <p>Results</p> <ul>");							
 							for(var i = 0; i<data.length;i++){	
-								var metaTag= metaTagger(data[i][1]);
+								var metaTag = metaTagger(data[i][1]);
 								$('#output').append('<br /><li><a href="'+data[i][1]+'">'+data[i][0]+"</a>"+metaTag+"</li>");
 							}
 							$('#output').append("</ul>");
@@ -113,12 +114,12 @@
 		});
 	}
 	
-	function metaTagger(URL){
+	function metaTagger(url){
 		var description="";
 		$.ajax({
-			url: "meta_tag.php";
-			data: "q="+URL;
-			dataType: 'text';
+			url: "meta_tag.php",
+			data: "q="+url,
+			dataType: 'text',
 			success:
 			function(data){
 				description=data;
