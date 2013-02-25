@@ -7,7 +7,7 @@
 
 <title>movements.org</title>
 
-<meta name='description' content='' />
+<meta name='description' content='sadsws' />
 <meta name='keywords' content='' />
 <meta name='robots' content='index,follow,archive' />
 
@@ -71,7 +71,7 @@
 	                        total[1]=(lookFor[i].value);
 	                }
 	        }
-		if?(total[0]=="cu"){
+		if(total[0]=="cu"){
 			
 		} else if(total[0]=="" || total[1]==""){
 	        		alert("Please leave nothing blank");
@@ -79,23 +79,21 @@
 	        ajaxCaller(total);
 	        }
 	}
-
-
 	function ajaxCaller(total){
 	        var surl="tag_finder.php";
 	        var am = total[0];
 	        var lf = total[1];
-	        $('#output').empty();
+	        $('#output').empty();		
 	        $(function(){ $.ajax({
 					url:surl,
 					data:"q="+am+"&r="+lf,
 					dataType:'json',
 					success:
 					function(data){
-						$('#output').append("<br /> <p>Results</p> <ul>");							
+						$('#output').append("<br /> <h1>Results</h1> <ul>");							
 						for(var i = 0; i<data.length;i++){	
-							var metaTag = metaTagger("");
-							$('#output').append('<br /><li><a href="'+data[i][1]+'">'+data[i][0]+"</a>"+metaTag+"</li>");
+							var metaTag = metaTagger(data[i][1]);												
+							$('#output').append('<li><h3><a href="'+data[i][1]+'">'+data[i][0]+"</a> </h2><p>"+metaTag+"</p></li>");
 						}
 						$('#output').append("</ul>");
 						}
@@ -103,19 +101,22 @@
 		});
 	}	
 	function metaTagger(url){
-		var description="";
-		alert("sdfs");
+		var result="";
 		$.ajax({
 			url: "meta_tag.php",
+			async: false,
 			data: "q="+url,
-			dataType: 'text',
+			dataType:'text',
 			success:
 			function(data){
-				description=data;
+				result=data;
 			}
-		})		
-		return description;
+		});
+	return result;
 	}
+
+
+		
 </script>
 
 <script type="text/javascript" > 
