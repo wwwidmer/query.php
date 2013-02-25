@@ -103,15 +103,26 @@
 
 					function(data)
 						{
-							$('#output').append("<br /> <p>Results</p> <ul>");
-							
-							for(var i = 0; i<data.length;i++){												
-							$('#output').append('<br /><li><a href="'+data[i][1]+'">'+data[i][0]+"</a></li>");
+							$('#output').append("<br /> <p>Results</p> <ul>");							
+							for(var i = 0; i<data.length;i++){	
+								var metaTag= metaTagger(data[i][1]);
+								$('#output').append('<br /><li><a href="'+data[i][1]+'">'+data[i][0]+"</a>"+metaTag+"</li>");
 							}
 							$('#output').append("</ul>");
 						}
 					}) 
 		});
+	}
+	
+	function metaTagger(URL){
+		var description="";
+		$.ajax({
+			url: "meta_tag.php";
+			data: "q="+URL;
+			dataType: text;
+			success: description=data;
+			return description;			
+		})		
 	}
 </script>
 
