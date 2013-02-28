@@ -177,6 +177,36 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 
     <div id="main-content">
        <div id="text-block">
+<div id="text-block" class="interior clearfix module">
+<?php
+// mysql connection
+$host = "localhost";
+$user = "root";
+$pw = "";
+$database = "movementshowto";
+$connect = mysql_connect($host,$user,$pw) or die(mysql_error());
+$query = mysql_select_db($database, $connect) or die (mysql_error());
+
+function getTable($case){
+// query the database, selects table a and finds tags and topics
+	$q=$_GET['q'];$z=$_GET['x'];$r=$_GET['r'];$x=$_GET['x'];
+	$que = "SELECT * FROM ".$case." WHERE Topic = '".$z."' OR Topic= '".$x."' OR Topic= '".$r."' OR 2ndTopic='".$z."' OR 2ndTopic='".$r."' OR 2ndTopic= '".$x."' ORDER BY Name";
+	$result = mysql_query($que) or die(mysql_error());
+	
+	echo "<h2>".$case."</h2>";
+	while ($row = mysql_fetch_row($result)){
+    		$str = "<li><a href ='" .$row[1]."' /> <b>".$row[0]."</b></a>";
+    		$ra = get_meta_tags($row[1]);
+    		echo $str;
+    		echo "<br/>";
+    		echo $ra['description'];
+    		echo "</li><br/>";
+	}
+}
+getTable("howtos");
+getTable("caseStudies");
+?>
+
 
        </div><!-- /#text-block -->
     </div><!-- /#main-content -->
