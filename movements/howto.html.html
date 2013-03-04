@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css" type="text/css" />
     <link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.movements.org/blog/rss/" /> 
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="/index_ee.php/js/source/"></script>
     <script type="text/javascript" src="/index_ee.php/js/index"></script>
 
@@ -138,7 +138,16 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 				$("label[for='IAMA2']").css('font-weight','bold');
 			break;
 		}	
-	}	
+	}
+	
+$(document).ready(function(){
+    var checkboxes = $('input[type="checkbox"]');                       
+    checkboxes.change(function(){
+        var curr = checkboxes.filter(':checked').length;
+	checkboxes.filter(':not(:checked)').prop('disabled', curr >= 3);
+    });
+});
+
 </script>
 </head>
 
