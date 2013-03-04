@@ -7,7 +7,7 @@
 
 <title>movements.org</title>
 
-<meta name='description' content='' />
+<meta name='description' content='Your personalized query results' />
 <meta name='keywords' content='' />
 <meta name='robots' content='index,follow,archive' />
 
@@ -179,6 +179,7 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
        <div id="text-block">
 <div id="text-block" class="interior clearfix module">
 <?php
+set_time_limit(60);
 // mysql connection
 $host = "localhost";
 $user = "root";
@@ -186,25 +187,78 @@ $pw = "";
 $database = "movementshowto";
 $connect = mysql_connect($host,$user,$pw) or die(mysql_error());
 $query = mysql_select_db($database, $connect) or die (mysql_error());
-
 function getTable($case){
-// query the database, selects table a and finds tags and topics
-	$q=$_GET['q'];$z=$_GET['x'];$r=$_GET['r'];$x=$_GET['x'];
-	$que = "SELECT * FROM ".$case." WHERE Topic = '".$z."' OR Topic= '".$x."' OR Topic= '".$r."' OR 2ndTopic='".$z."' OR 2ndTopic='".$r."' OR 2ndTopic= '".$x."' ORDER BY Name";
-	$result = mysql_query($que) or die(mysql_error());
-	
-	echo "<h2>".$case."</h2>";
+// query the database, selects table case and finds tags and topics
+	$q=$_GET['q'];$z=$_GET['z'];$r=$_GET['r'];$x=$_GET['x'];
+	$arr = array($z,$r,$x);
+	echo "<h2><u>".$case."</u></h2>";
+	foreach($arr as $val){
+	getTopic($q, $val, $case);
+	}	
+}
+function getTopic($iam, $t, $case){
+	$topic= "SELECT * FROM ".$case." WHERE Topic = '".$t."' OR 2ndTopic ='".$t."' ORDER BY Name";
+	$result = mysql_query($topic) or die(mysql_error());	
+	echo "<p><u>";
+	echo formatTopic($t);
+	echo "</u></p><ul>";
 	while ($row = mysql_fetch_row($result)){
-    		$str = "<li><a href ='" .$row[1]."' /> <b>".$row[0]."</b></a>";
+    		$str = "<li><a href ='" .$row[1]."' target='_blank'> <b><u>".$row[0]."</u></b></a>";
     		$ra = get_meta_tags($row[1]);
     		echo $str;
     		echo "<br/>";
     		echo $ra['description'];
     		echo "</li><br/>";
+	}	echo "</ul>";
+}
+function formatTopic($t){
+switch($t){
+	case "planandstrategize":
+		echo "Plan and Strategize";
+	break;
+	case "buildawareness":
+		echo "Build awareness";
+	break;
+	case "staysafe":
+		echo "Stay safe";
+	break;
+	case "mobilize":
+		echo "Mobilize";
+	break;
+	case "accessinformation":
+		echo "Access blocked information";
+	break;
+	case "collaborate":
+		echo "Collaborate";
+	break;
+	case "fundraise":
+		echo "Fundraise";
+	break;
+	case "keepsupportersengaged":
+		echo "Keep supporters engaged";
+	break;
 	}
 }
+
 getTable("howtos");
 getTable("caseStudies");
+
+//try{
+// $db= new PDO('mysql:host=localhost;dbname=movementshowto;charset=utf8',$user,$pw);
+// $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+//
+// $stmt = $db->query("select * from ".$case." where Topic = ".$conn->quote(
+// foreach($data as $row){
+// print_r($row);
+// }
+// or 2ndTopic = ?");
+// http://net.tutsplus.com/tutorials/php/php-database-access-are-you-doing-it-correctly/
+//
+// }
+// catch(PDOException $e){
+// echo 'ERROR: ' . $e->getMessage();
+//} 
+
 ?>
 
 
