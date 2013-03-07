@@ -66,6 +66,7 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 
 
 <script type="text/javascript">
+	// Determines inputs
 	function select(){
 	       var total= new Array("","","");	       
 	       var q = $("input:radio[name='iama']:checked").val();
@@ -84,13 +85,21 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 	}
 </script>
 <script type="text/javascript" > 
+	// JQuery for the buttons to become interactive and responsive 
 	$(document).ready(function() {
+		var checkboxes = $('input[type="checkbox"]');                       
+   		checkboxes.change(function(){
+     		var curr = checkboxes.filter(':checked').length;
+		checkboxes.filter(':not(:checked)').prop('disabled', curr >= 3);
+		});
+
 		var valueofama="";		
 		$("input[name='iama']").change(function(){
     		valueofama= $("input:radio[name='iama']:checked").val();
     		tagSetter(valueofama);
 		});
-	});	
+	});
+	// Bolds and changes colors of buttons for responsive buttons
 	function tagSetter(amaValue){	 	
 		for(var i =0;i<10;i++){			
 				$("label[for='IAMA"+i+"']").css('color','gray');
@@ -139,14 +148,6 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 		}	
 	}
 	
-$(document).ready(function(){
-    var checkboxes = $('input[type="checkbox"]');                       
-    checkboxes.change(function(){
-        var curr = checkboxes.filter(':checked').length;
-	checkboxes.filter(':not(:checked)').prop('disabled', curr >= 3);
-    });
-});
-
 </script>
 </head>
 
@@ -310,16 +311,14 @@ $(document).ready(function(){
 
 <div id="text-block" class="interior clearfix module">
 
+<!-- Alpha text of input, little formatting -->
 <h2> I am a(n)...</h2>
-
 <form id="iamma">
 <input type="radio" name="iama" value="activist"> Activist<br>
 <input type="radio" name="iama" value = "organizer"> Organizer <br>
 <input type="radio" name="iama" value="reporter"> Reporter <br>
 <input type="radio" name="iama" value="researcher"> Researcher <br>
-
 </form>
-
 <h2> Looking to... </h2>
 <form id="lookFor">
 <input id="IAMA1" type="checkbox" name="IAMA1" value="planandstrategize"> <label for="IAMA1">Plan And Strategize</label><br>
@@ -331,12 +330,8 @@ $(document).ready(function(){
 <input type="checkbox" name="IAMA7" value="fundraise"><label for="IAMA7"> Fundraise</label> <br>
 <input type="checkbox" name="IAMA8" value="keepsupportersengaged"> <label for="IAMA8">Keep Supporters Engaged </label><br>
 </form>
-
-
 <button value=Submit onclick="select()">Submit</button>
 </div>
-
-
 <div id="text-block" class="interior clearfix module">
 
 
