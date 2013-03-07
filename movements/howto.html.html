@@ -76,11 +76,10 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 				hits++;
 	                }
 	        }		
-		if(total[0]=="cu"){
-		} else if(total[0]=="" || q==""){
-	        		alert("Please leave nothing blank");
+		if(total[0]=="" || q ==null){
+	        	alert("Please leave nothing blank");
 	        }else{
-	        window.open("query.php?q="+q+"&r="+total[0]+"&x="+total[1]+"&z="+total[2]);
+	        window.open("query.php?q="+q+"&x="+total[0]+"&y="+total[1]+"&z="+total[2]);
 	        }
 	}
 </script>
