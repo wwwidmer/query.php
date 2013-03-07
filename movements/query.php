@@ -68,10 +68,9 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 
 <body id="home" class="base">
 <div id="wrap">
-      <div id="header" class="clearfix">
+    	<div id="header" class="clearfix">
             <div id="logo">
-                <a href="/"><img src="/page/-/images/logo-red-head.png" alt="" /></a>
-                <a href="/"><img src="logo-red-head.png" alt="Movements.org" /></a>
+                <a href="/"><img src="logo.png" alt="Movements.org" /></a>
             </div>
 
       <script src="/page/-/js/google-search.js" type="text/javascript"></script>
@@ -189,7 +188,7 @@ function getTable($case){
 	foreach($arr as $val){
 		getTopic($q, $val, $case);
 	} 	
-	$endtime = microtime();
+	
 }
 // Connections to database, displaying of query results
 function getTopic($iam, $t, $case){
@@ -210,14 +209,15 @@ echo formatTopic($t);
 			// Format results with links and meta tags for descriptions
  			foreach($result as $row){
 				$str="<li><a href='".$row['URL']."' target='_blank'> <b><u>".$row['Name']."</u></b></a><br/>";
-				$meta = get_meta_tags($row['URL']);
-				echo $str.$meta['description']."</li><br/>";
-			}
-		} 
+				echo $str;
+				if($case=="indepthmaterials"){
+					echo $row['Description'];
+				}else{$meta = get_meta_tags($row['URL']);echo $meta['description'];}
+			}echo "</li><br/>";
+		} else {echo "<li>Sorry, nothing found</li>";}
 	} catch(PDOException $e){
  		echo 'ERROR: ' . $e->getMessage();
-	} 
-echo "</ul>";	
+	} echo "</ul>";
 }
 // Determine the proper heading for particular topics
 function formatTopic($t){
@@ -251,6 +251,8 @@ switch($t){
 // Actual function calls
 getTable("howtos");
 getTable("caseStudies");
+getTable("indepthmaterials");
+getTable("canvasvideos");
 ?>
 
 
