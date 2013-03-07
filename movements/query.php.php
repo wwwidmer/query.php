@@ -178,25 +178,28 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
     <div id="main-content">
        <div id="text-block">
 <div id="text-block" class="interior clearfix module">
+
 <?php
 set_time_limit(60);
-
+// All groups of information get their own table which displays subset topics within, max is 3
 function getTable($case){
-	$q=$_GET['q'];$z=$_GET['z'];$r=$_GET['y'];$x=$_GET['x'];
-	$arr = array($z,$r,$x);	
+	$q=$_GET['q'];$z=$_GET['z'];$y=$_GET['y'];$x=$_GET['x'];
+	$arr = array($x,$y,$z);	
 	echo "<h2><u>".$case."</u></h2>";
 	foreach($arr as $val){
 		getTopic($q, $val, $case);
 	} 	
+	$endtime = microtime();
 }
-
+// Connections to database, displaying of query results
 function getTopic($iam, $t, $case){
-// mysql connection
+// mysql connection attributes
 $host = "localhost";
 $user = "query";
 $pw = " ";
 $database = "movementshowto";
 echo formatTopic($t);
+	// PDO for connection to the database, prepared statements to deter SQL injections
 	try{
  		$db= new PDO('mysql:host=localhost;dbname=movementshowto;charset=utf8',$user,$pw);
  		$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -204,11 +207,11 @@ echo formatTopic($t);
 		$stmt->execute(array('topic'=>$t));		
 		$result=$stmt->fetchAll();	
 		if(count($result)){	
+			// Format results with links and meta tags for descriptions
  			foreach($result as $row){
 				$str="<li><a href='".$row['URL']."' target='_blank'> <b><u>".$row['Name']."</u></b></a><br/>";
 				$meta = get_meta_tags($row['URL']);
-				echo $str;
-				echo $meta['description']."</li><br/>";
+				echo $str.$meta['description']."</li><br/>";
 			}
 		} 
 	} catch(PDOException $e){
@@ -216,7 +219,7 @@ echo formatTopic($t);
 	} 
 echo "</ul>";	
 }
-
+// Determine the proper heading for particular topics
 function formatTopic($t){
 switch($t){
 	case "planandstrategize":
@@ -245,7 +248,7 @@ switch($t){
 	break;
 	}
 }
-
+// Actual function calls
 getTable("howtos");
 getTable("caseStudies");
 ?>
