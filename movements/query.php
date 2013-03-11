@@ -229,16 +229,16 @@ function getTopic($iam, $t, $case,$db){
 function formatTopic($t){
 switch($t){
 	case "howtos":
-		echo "<h2><u>How Tos</h2> </u>";
+		echo "<h2><u>How Tos</h2></u>";
 	break;
 	case "caseStudies":
-		echo "<h2><u>Case Studies</h2> </u>";
+		echo "<h2><u>Case Studies</h2></u>";
 	break;
 	case "indepthmaterials":
-		echo "<h2><u>Indepth Materials</h2> </u>";
+		echo "<h2><u>Indepth Materials</h2></u>";
 	break;
 	case "canvasvideos":
-		echo "<h2><u>Canvas Videos</h2> </u>";
+		echo "<h2><u>Canvas Videos</h2></u>";
 	break;
 	case "planandstrategize":
 		echo "<p><u>Plan and Strategize</p></u><ul>";
