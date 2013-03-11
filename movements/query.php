@@ -179,29 +179,35 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 <div id="text-block" class="interior clearfix module">
 
 <?php
+// Begin timer
+$tzero=microtime(true);
+// Allow up to 60 seconds of computing, then exit.
 set_time_limit(60);
-// All groups of information get their own table which displays subset topics within, max is 3
-function getTable($case){
-	$q=$_GET['q'];$z=$_GET['z'];$y=$_GET['y'];$x=$_GET['x'];
-	$arr = array($x,$y,$z);	
-	echo "<h2><u>".$case."</u></h2>";
-	foreach($arr as $val){
-		getTopic($q, $val, $case);
-	} 	
-	
-}
-// Connections to database, displaying of query results
-function getTopic($iam, $t, $case){
 // mysql connection attributes
 $host = "localhost";
 $user = "query";
 $pw = " ";
 $database = "movementshowto";
-echo formatTopic($t);
+try{
+	$db= new PDO('mysql:host=localhost;dbname=movementshowto;charset=utf8',$user,$pw);
+	$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e){
+	echo 'ERROR: ' .$e->getMessage();
+}
+// All groups of information get their own table which displays subset topics within, max is 3
+function getTable($case,$db){
+	$q=$_GET['q'];$z=$_GET['z'];$y=$_GET['y'];$x=$_GET['x'];
+	$arr = array($x,$y,$z);	
+	echo "<h2><u>".$case."</u></h2>";
+	foreach($arr as $val){
+		if(!$val==""){getTopic($q, $val, $case,$db);}
+	} 	
+}
+// Displaying of query results
+function getTopic($iam, $t, $case,$db){
+	echo formatTopic($t);
 	// PDO for connection to the database, prepared statements to deter SQL injections
 	try{
- 		$db= new PDO('mysql:host=localhost;dbname=movementshowto;charset=utf8',$user,$pw);
- 		$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
  		$stmt = $db->prepare('SELECT * FROM '.$case.' where Topic = :topic ORDER BY Name');
 		$stmt->execute(array('topic'=>$t));		
 		$result=$stmt->fetchAll();	
@@ -249,10 +255,14 @@ switch($t){
 	}
 }
 // Actual function calls
-getTable("howtos");
-getTable("caseStudies");
-getTable("indepthmaterials");
-getTable("canvasvideos");
+getTable("howtos",$db);
+getTable("caseStudies",$db);
+getTable("indepthmaterials",$db);
+getTable("canvasvideos",$db);
+// Timer end and display
+$tone = microtime(true);
+$ttotal=round($tone-$tzero, 1, PHP_ROUND_HALF_UP);
+echo "<br/><p><i> Query completed in ".$ttotal." seconds.</i></p><br/>";
 ?>
 
 
