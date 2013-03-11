@@ -218,8 +218,8 @@ function getTopic($iam, $t, $case,$db){
 				echo $str;
 				if($case=="indepthmaterials"){
 					echo $row['Description'];
-				}else{$meta = get_meta_tags($row['URL']);echo $meta['description'];}
-			}echo "</li><br/>";
+				}else{$meta = get_meta_tags($row['URL']);echo $meta['description'];} echo"</li>";
+			}echo "<br/>";
 		} else {echo "<li>Sorry, nothing found</li>";}
 	} catch(PDOException $e){
  		echo 'ERROR: ' . $e->getMessage();
