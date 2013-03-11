@@ -198,7 +198,7 @@ try{
 function getTable($case,$db){
 	$q=$_GET['q'];$z=$_GET['z'];$y=$_GET['y'];$x=$_GET['x'];
 	$arr = array($x,$y,$z);	
-	echo "<h2><u>".$case."</u></h2>";
+	echo formatTopic($case);
 	foreach($arr as $val){
 		if(!$val==""){getTopic($q, $val, $case,$db);}
 	} 	
@@ -228,6 +228,18 @@ function getTopic($iam, $t, $case,$db){
 // Determine the proper heading for particular topics
 function formatTopic($t){
 switch($t){
+	case "howtos":
+		echo "<h2><u>How Tos</h2> </u>";
+	break;
+	case "caseStudies":
+		echo "<h2><u>Case Studies</h2> </u>";
+	break;
+	case "indepthmaterials":
+		echo "<h2><u>Indepth Materials</h2> </u>";
+	break;
+	case "canvasvideos":
+		echo "<h2><u>Canvas Videos</h2> </u>";
+	break;
 	case "planandstrategize":
 		echo "<p><u>Plan and Strategize</p></u><ul>";
 	break;
