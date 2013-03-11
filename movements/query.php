@@ -206,10 +206,10 @@ function getTable($case,$db){
 // Displaying of query results
 function getTopic($iam, $t, $case,$db){
 	echo formatTopic($t);
-	// PDO for connection to the database, prepared statements to deter SQL injections
+	// prepared statements to deter SQL injections
 	try{
- 		$stmt = $db->prepare('SELECT * FROM '.$case.' where Topic = :topic ORDER BY Name');
-		$stmt->execute(array('topic'=>$t));		
+ 		$stmt = $db->prepare('SELECT * FROM '.$case.' where Tag = :tag AND (Topic = :topic OR 2ndTopic = :topic) ORDER BY Name');
+		$stmt->execute(array('topic'=>$t, 'tag'=>$iam));		
 		$result=$stmt->fetchAll();	
 		if(count($result)){	
 			// Format results with links and meta tags for descriptions
@@ -218,7 +218,7 @@ function getTopic($iam, $t, $case,$db){
 				echo $str;
 				if($case=="indepthmaterials"){
 					echo $row['Description'];
-				}else{$meta = get_meta_tags($row['URL']);echo $meta['description'];} echo"</li>";
+				}else{$meta = get_meta_tags($row['URL']);echo $meta['description'];}echo "</li>";
 			}echo "<br/>";
 		} else {echo "<li>Sorry, nothing found</li>";}
 	} catch(PDOException $e){
@@ -229,16 +229,16 @@ function getTopic($iam, $t, $case,$db){
 function formatTopic($t){
 switch($t){
 	case "howtos":
-		echo "<h2><u>How Tos</h2></u>";
+		echo "<h2><u>How Tos</h2> </u>";
 	break;
 	case "caseStudies":
-		echo "<h2><u>Case Studies</h2></u>";
+		echo "<h2><u>Case Studies</h2> </u>";
 	break;
 	case "indepthmaterials":
-		echo "<h2><u>Indepth Materials</h2></u>";
+		echo "<h2><u>Indepth Materials</h2> </u>";
 	break;
 	case "canvasvideos":
-		echo "<h2><u>Canvas Videos</h2></u>";
+		echo "<h2><u>Canvas Videos</h2> </u>";
 	break;
 	case "planandstrategize":
 		echo "<p><u>Plan and Strategize</p></u><ul>";
