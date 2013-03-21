@@ -2,8 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-    <title>Movements.org</title>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
 <title>movements.org</title>
 
@@ -30,8 +29,6 @@
 <meta name='DC.rights' scheme='DCTERMS.URI' content='' />
 <meta name='DC.format' content='text/html' />
 <meta name='DC.identifier' scheme='DCTERMS.URI' content='http://www.movements.org/content/home-dev/' />
-    
-
     <link rel="shortcut icon" href="/page/-/images/header/favicon.png" type="image/x-icon" />
     <link type="text/css" rel="stylesheet" href="http://www.movements.org/?css=styles/index" media="screen" />
     <link type="text/css" rel="stylesheet" href="http://www.movements.org/?css=styles/print" media="print" />
@@ -43,7 +40,7 @@
     <script type="text/javascript" src="/index_ee.php/js/source/"></script>
     <script type="text/javascript" src="/index_ee.php/js/index"></script>
 
-    <!--[if IE 6]>
+  <!--[if IE 6]>
       <link type="text/css" rel="stylesheet" href="http://www.movements.org/?css=styles/ie6"/>
     <![endif]-->
     
@@ -57,14 +54,26 @@
         var pageTracker = _gat._getTracker("UA-15124248-1");
         pageTracker._trackPageview();
         } catch(err) {}
-    </script>
-        
-    <!-- blue_source_tracking enabled -->
+    </script>  
 
 <meta name="google-site-verification"
 content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 
+
+ 
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+  
+  <script>
+  $(function() {
+    $( ".accordion" ).accordion({
+	heightStyle: "content" });
+  });
+  </script>
 </head>
+<body>
+ 
 
 <body id="home" class="base">
 <div id="wrap">
@@ -109,6 +118,7 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 
 </div><!-- /.tooltip -->
             </div>
+
 
 
 <div id="nav">
@@ -168,7 +178,7 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
             </ul>   
         </div><!-- /#nav -->
                                </div><!-- /#header -->
-    <div id="content" class="clearfix">
+ <div id="content" class="clearfix">
 
 
 
@@ -177,6 +187,10 @@ content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
     <div id="main-content">
        <div id="text-block">
 <div id="text-block" class="interior clearfix module">
+
+
+
+
 
 <?php
 // Begin timer
@@ -201,7 +215,9 @@ function getTable($case,$db){
 	echo formatTopic($case);
 	foreach($arr as $val){
 		if(!$val==""){getTopic($q, $val, $case,$db);}
-	} 	
+	} 
+	echo "</div>";
+	
 }
 // Displaying of query results
 function getTopic($iam, $t, $case,$db){
@@ -220,7 +236,7 @@ function getTopic($iam, $t, $case,$db){
 					echo $row['Description'];
 				}else{$meta = get_meta_tags($row['URL']);echo $meta['description'];}echo "</li>";
 			}echo "<br/>";
-		} else {echo "<li>Sorry, nothing found</li>";}
+		} else {echo "<li>Sorry, nothing found</li>";} 
 	} catch(PDOException $e){
  		echo 'ERROR: ' . $e->getMessage();
 	} echo "</ul>";
@@ -229,16 +245,20 @@ function getTopic($iam, $t, $case,$db){
 function formatTopic($t){
 switch($t){
 	case "howtos":
-		echo "<h2><u>How Tos</h2> </u>";
+		echo "<h2><u>How Tos</u></h2><div class='accordion'>";
+
 	break;
 	case "caseStudies":
-		echo "<h2><u>Case Studies</h2> </u>";
+		echo "<h2><u>Case Studies</u></h2><div class='accordion'>";
+
 	break;
 	case "indepthmaterials":
-		echo "<h2><u>Indepth Materials</h2> </u>";
+		echo "<h2><u>Indepth Materials</u></h2> <div class='accordion'>";
+
 	break;
 	case "canvasvideos":
-		echo "<h2><u>Canvas Videos</h2> </u>";
+		echo "<h2><u>Canvas Videos</u></h2><div class='accordion'>";
+
 	break;
 	case "planandstrategize":
 		echo "<p><u>Plan and Strategize</p></u><ul>";
@@ -277,8 +297,7 @@ $ttotal=round($tone-$tzero, 1, PHP_ROUND_HALF_UP);
 echo "<br/><p><i> Query completed in ".$ttotal." seconds.</i></p><br/>";
 ?>
 
-
-       </div><!-- /#text-block -->
+  </div><!-- /#text-block -->
     </div><!-- /#main-content -->
 
  </div><!-- /#content -->
@@ -296,10 +315,7 @@ echo "<br/><p><i> Query completed in ".$ttotal." seconds.</i></p><br/>";
        	    	            <li><a href="/contribute/">DONATE</a></li>    
                         </ul>
     </div><!-- /#footer -->
-
-
-
-    <div id="sub-footer">
+ <div id="sub-footer">
     <p>copyright &copy;2010 - 2013 by the Alliance for Youth Movements. <a href="http://www.movements.org/pages/copyright-and-licensing-information">Some rights reserved</a>    |   <a href="/pages/privacy-policy">privacy</a>  |   <a href="mailto:info@movements.org">contact</a></p>
     </div>
     
@@ -307,7 +323,6 @@ echo "<br/><p><i> Query completed in ".$ttotal." seconds.</i></p><br/>";
     
     
 	</div><!-- /#wrap -->
-
 <script type="text/javascript">
 Cufon.now();
 </script>
@@ -322,8 +337,7 @@ Cufon.now();
   </script>
   <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=7022d79f-20c2-4742-8ca0-c7e8816a4e60&"></script> 
   <script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  
-<script type="text/javascript">
+  <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'movementsorg'; // required: replace example with your forum shortname
 
@@ -337,5 +351,7 @@ Cufon.now();
 </script>
 
  <script id="aptureScript" type="text/javascript" src="http://www.apture.com/js/apture.js?siteToken=2xmZRkq"; charset="utf-8"></script> 
+
+ 
 </body>
 </html>
