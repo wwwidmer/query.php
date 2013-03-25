@@ -1,7 +1,7 @@
 /*
 * Movements prototype 
 * query.php query.html
-* v .7 3/7/2013 
+* v 1.0 3/25/2013 
 * Authors: William Widmer (coding) &
 * The movements.org team: ()
 * Website templates by ()
@@ -27,8 +27,6 @@ actual server but using EasyPHP along with PHPMyAdmin for simulated server / dat
 Database method chosen instead of searching the website for each query to emphasize less computing clientside
 and require more computing server side.
 
-COMING SOON:
-Goal of several more resources to be displayed. Including: in depth guides, resistance videos by Canvas, Twitter Lists,
-Cyber dissidents list, among others.
-Prettier formatting.
-Moving away from base templates.
+1.0 - Code runs cleanly,formatting and integrating onto Movements.org
+.7 - Code runs, doesn't format data
+
