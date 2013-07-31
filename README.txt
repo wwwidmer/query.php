@@ -4,7 +4,7 @@
 * v 1.0 3/25/2013 
 * Authors: William Widmer (coding) &
 * The movements.org team: ()
-* Website templates by ()
+* Website templates by (BSD)
 */
 
 
@@ -27,6 +27,9 @@ actual server but using EasyPHP along with PHPMyAdmin for simulated server / dat
 Database method chosen instead of searching the website for each query to emphasize less computing clientside
 and require more computing server side.
 
+
+Update: 8/2013 - Webhost BSD doesn't like custom PHP, so this code is just sitting around. 
+                 Trying to rebuild using expressionengine functions & JS.
 1.0 - Code runs cleanly,formatting and integrating onto Movements.org
 .7 - Code runs, doesn't format data
 
