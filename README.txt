@@ -28,8 +28,7 @@ Database method chosen instead of searching the website for each query to emphas
 and require more computing server side.
 
 
-Update: 8/2013 - Webhost BSD doesn't like custom PHP, so this code is just sitting around. 
-                 Trying to rebuild using expressionengine functions & JS.
+Update: 8/2013 - Webhost BSD doesn't like custom PHP, so this code is just sitting around. Trying to rebuild using expressionengine functions & JS.
 1.0 - Code runs cleanly,formatting and integrating onto Movements.org
 .7 - Code runs, doesn't format data
 
