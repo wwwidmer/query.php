@@ -4,31 +4,8 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
-<title>movements.org</title>
+<title>Movements.org</title>
 
-<meta name='description' content='' />
-<meta name='keywords' content='' />
-<meta name='robots' content='index,follow,archive' />
-
-<meta name='geo.position' content='{latitude},{longitude}' />
-<meta name='geo.placename' content='{placename}' />
-<meta name='geo.region' content='{region}' />
-
-
-<link rel='schema.DC' href='http://purl.org/dc/elements/1.1/' />
-<link rel='schema.DCTERMS' href='http://purl.org/dc/terms/' />
-<meta name='DC.title' content='movements.org' />
-<meta name='DC.creator' content='' />
-<meta name='DC.subject' content='' />
-<meta name='DC.description' content='' />
-<meta name='DC.publisher' content='' />
-<meta name='DC.date.created' scheme='DCTERMS.W3CDTF' content='2013-02-24T19:39:07-0500' />
-<meta name='DC.date.modified' scheme='DCTERMS.W3CDTF' content='1367-03-29T04:00:00-0500' />
-<meta name='DC.date.valid' scheme='DCTERMS.W3CDTF' content='2013-03-02T21:39:07-0500' />
-<meta name='DC.type' scheme='DCTERMS.DCMIType' content='Text' />
-<meta name='DC.rights' scheme='DCTERMS.URI' content='' />
-<meta name='DC.format' content='text/html' />
-<meta name='DC.identifier' scheme='DCTERMS.URI' content='http://www.movements.org/content/home-dev/' />
     <link rel="shortcut icon" href="/page/-/images/header/favicon.png" type="image/x-icon" />
     <link type="text/css" rel="stylesheet" href="http://www.movements.org/?css=styles/index" media="screen" />
     <link type="text/css" rel="stylesheet" href="http://www.movements.org/?css=styles/print" media="print" />
@@ -43,19 +20,7 @@
   <!--[if IE 6]>
       <link type="text/css" rel="stylesheet" href="http://www.movements.org/?css=styles/ie6"/>
     <![endif]-->
-    
-
-    <script type="text/javascript">
-        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <script type="text/javascript">
-        try {
-        var pageTracker = _gat._getTracker("UA-15124248-1");
-        pageTracker._trackPageview();
-        } catch(err) {}
-    </script>  
-
+   
 <meta name="google-site-verification"
 content="n4HbLLa2_pawr5Kt0kops5rN0VURUuxv32E567aB-JE" />
 
@@ -326,32 +291,6 @@ echo "<br/><p><i> Query completed in ".$ttotal." seconds.</i></p><br/>";
 <script type="text/javascript">
 Cufon.now();
 </script>
-
-
- <script type="text/javascript">
-                function googleTranslateElementInit() {
-                  new google.translate.TranslateElement({
-                    pageLanguage: 'en'
-                  }, 'google_translate_element');
-                }
-  </script>
-  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=7022d79f-20c2-4742-8ca0-c7e8816a4e60&"></script> 
-  <script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  <script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'movementsorg'; // required: replace example with your forum shortname
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-
- <script id="aptureScript" type="text/javascript" src="http://www.apture.com/js/apture.js?siteToken=2xmZRkq"; charset="utf-8"></script> 
-
  
 </body>
 </html>
